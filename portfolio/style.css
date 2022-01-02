@@ -32,15 +32,16 @@ body {
 .container {
   width: 1440px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .header-container {
   height: 90px;
+  padding: 0 20px;
   display: flex;
   justify-content: flex-end;
-  flex-wrap: nowrap;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   background: url('./assets/img/header-bg.jpg');
   background-repeat: no-repeat;
   background-position: center 0;
@@ -50,7 +51,6 @@ body {
 .logo {
   width: 50px;
   height: 50px;
-  margin-top: 20px;
   background-image: url('./assets/svg/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -62,20 +62,24 @@ body {
 }
 
 .nav {
+  width: 500px;
   margin-left: auto;
+  margin-right: 33px;
 }
 
 .nav-list {
   display: flex;
   justify-content: flex-end;
-  align-content: space-around;
   align-items: center;
   list-style: none;
+  font-size: 20px;
+}
+
+.nav-item {
+  padding-left: 30px;
 }
 
 .nav-link {
-  padding: 0 20px;
-  font-size: 20px;
   line-height: 50px;
   text-decoration: none;
   color: var(--color-white);
@@ -89,10 +93,8 @@ body {
 .switch-lng {
   width: 70px;
   height: 50px;
-  margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
-  text-decoration: none;
   color: var(--color-white);
 }
 
