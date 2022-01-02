@@ -32,6 +32,10 @@ body {
 .container {
   width: 1440px;
   margin: 0 auto;
+  padding: 0;
+}
+
+.section {
   padding: 0 20px;
 }
 
@@ -196,8 +200,6 @@ body {
   font-size: 40px;
   line-height: 80px;
   color: var(--color-gold);
-  /* z-index: 1; */
-  /* overflow: hidden; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -314,6 +316,7 @@ body {
 }
 
 .price-items {
+  margin-bottom: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -360,4 +363,30 @@ body {
 
 .price-item .gold-btn {
   margin-top: 40px;
+}
+
+.contacts-container {
+  width: 1440px;
+  height: 700px;
+  padding: 0;
+  margin-top: 100px;
+  margin-left: -20px;
+  background: url('./assets/img/contacts-bg.jpg');
+  background-size: auto 700px;
+  background-position: center center;
+}
+
+.contacts-form {
+  margin-left: auto;
+  margin-right: 20px;
+  width: 450px;
+  height: 445px;
+}
+
+.contacts-title {
+  padding-top: 60px;
+  font-family: "Merriweather", serif;
+  font-size: 40px;
+  line-height: 80px;
+  color: var(--color-gold);
 }
