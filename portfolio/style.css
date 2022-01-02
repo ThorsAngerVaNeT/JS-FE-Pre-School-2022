@@ -109,12 +109,18 @@ body {
   background-repeat: no-repeat;
 }
 
-/* 
-.section-item a {
-  color: #829985;
-  transition: color 0.5s;
+.icon {
+  width: 30px;
+  height: 30px;
+  fill: var(--color-white);
 }
 
-.section-item a:hover {
-  color: #4d2323;
-} */
+.logo {
+  width: 50px;
+  height: 50px;
+  fill: var(--color-white);
+}
+
+.icon:hover, .logo:hover {
+  fill: var(--color-gold);
+}
