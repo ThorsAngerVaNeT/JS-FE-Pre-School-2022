@@ -1,5 +1,118 @@
+:root {
+  --color-gold: #bdae82;
+  --color-black: #000;
+  --color-white: #fff;
+  --font1: 60px;
+  --font2: 40px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--font2);
+  font-weight: 400;
+  line-height: 50px;
+  color: var(--color-white);
+  background-color: #000;
+  overflow-y: scroll;
+}
+
 .container {
   width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.header-container {
+  height: 90px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  background: url('./assets/img/header-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center 0;
+}
+
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  background-image: url('./assets/svg/logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  align-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-link {
+  padding: 0 20px;
+  font-size: 20px;
+  line-height: 50px;
+  text-decoration: none;
+  color: var(--color-white);
+  transition: .5s;
+}
+
+.nav-link:hover {
+  color: var(--color-gold);
+}
+
+.switch-lng {
+  width: 70px;
+  height: 50px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.lng-active {
+  font-weight: bold;
+  color: var(--color-gold);
+}
+
+.hero-container {
+  background-image: url('./assets/img/header-bg.jpg');
+  background-position: center -90px;
+  background-repeat: no-repeat;
+}
+
+/* 
+.section-item a {
+  color: #829985;
+  transition: color 0.5s;
+}
+
+.section-item a:hover {
+  color: #4d2323;
+} */
