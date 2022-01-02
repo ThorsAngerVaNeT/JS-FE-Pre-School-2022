@@ -155,6 +155,17 @@ body {
   font-family: inherit;
 }
 
+.black-btn {
+  width: 220px;
+  height: 55px;
+  font-size: 20px;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  background-color: transparent;
+}
+
 .title-wrapper {
   width: 50%;
   margin: 0 auto;
@@ -163,38 +174,36 @@ body {
 
 .section-title {
   width: 700px;
-  height: 80px;
   margin: 100px 0 0 0;
   font-family: 'Merriweather', serif;
   font-size: 40px;
   line-height: 80px;
   color: var(--color-gold);
-  background-color: var(--color-black);
+  /* z-index: 1; */
+  /* overflow: hidden; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .section-title::before {
   content: "";
-  display: inline-block;
-  width: 254px;
-  margin-right: 20px;
-  padding-right: 20px;
   border-top: 2px solid var(--color-gold);
-  border-radius: 0px;
-  transform: translateY(-14px);
+  margin: 0 20px 0 0;
+  flex: 1 0 20px;
 }
 
 .section-title::after {
   content: "";
-  display: inline-block;
-  width: 252px;
-  margin-left: 20px;
-  padding-left: 20px;
   border-top: 2px solid var(--color-gold);
-  transform: translateY(-14px);
+  margin: 0 0 0 20px;
+  flex: 1 0 20px;
 }
 
 .skills-items {
   margin-top: 60px;
+  padding-bottom: 2px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -248,4 +257,24 @@ body {
   font-size: 18px;
   line-height: 36px;
   text-align: center;
+}
+
+.portfolio-btns {
+  width: 895px;
+  margin: 60px auto 0;
+  display: flex;
+  gap: 5px;
+}
+
+.portfolio-items {
+  width: 1400px;
+  margin: 60px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.portfolio-item {
+  width: 450px;
+  height: 560px;
 }
