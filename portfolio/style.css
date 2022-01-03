@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: var(--font2);
   font-weight: 400;
   line-height: 50px;
@@ -46,23 +46,23 @@ body {
   justify-content: flex-end;
   flex-wrap: wrap;
   align-items: center;
-  background: url("./assets/img/header-bg.jpg");
+  background: url('./assets/img/header-bg.jpg');
   background-repeat: no-repeat;
   background-position: center 0;
 }
 
-
 .logo {
   width: 50px;
   height: 50px;
-  background-image: url("./assets/svg/logo.svg");
+  background-image: url('./assets/svg/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
   transition: 0.3s;
 }
 
 .logo:hover {
-  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
 }
 
 .nav {
@@ -87,7 +87,7 @@ body {
   line-height: 50px;
   text-decoration: none;
   color: var(--color-white);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .nav-link:hover {
@@ -104,11 +104,11 @@ body {
 
 .switch-lng span {
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .switch-lng span:hover {
-  color: var(--color-gold)
+  color: var(--color-gold);
 }
 
 .lng-active {
@@ -118,7 +118,7 @@ body {
 
 .hero-container {
   margin: 0 -20px;
-  background-image: url("./assets/img/header-bg.jpg");
+  background-image: url('./assets/img/header-bg.jpg');
   background-position: center -90px;
   background-repeat: no-repeat;
 }
@@ -135,7 +135,8 @@ body {
   fill: var(--color-white);
 }
 
-.icon:hover, .logo:hover {
+.icon:hover,
+.logo:hover {
   fill: var(--color-gold);
 }
 
@@ -147,7 +148,7 @@ body {
 
 .hero-text h1 {
   margin: 0;
-  font-family: "Merriweather", serif;
+  font-family: 'Merriweather', serif;
   font-size: var(--font1);
   line-height: 120px;
 }
@@ -198,7 +199,7 @@ body {
 .section-title {
   width: 700px;
   margin: 100px 0 60px 0;
-  font-family: "Merriweather", serif;
+  font-family: 'Merriweather', serif;
   font-size: 40px;
   line-height: 80px;
   color: var(--color-gold);
@@ -209,14 +210,14 @@ body {
 }
 
 .section-title::before {
-  content: "";
+  content: '';
   border-top: 2px solid var(--color-gold);
   margin: 0 20px 0 0;
   flex: 1 0 20px;
 }
 
 .section-title::after {
-  content: "";
+  content: '';
   border-top: 2px solid var(--color-gold);
   margin: 0 0 0 20px;
   flex: 1 0 20px;
@@ -237,22 +238,22 @@ body {
 }
 
 .skill-item:nth-child(1) {
-  background-image: url("./assets/svg/camera.svg");
+  background-image: url('./assets/svg/camera.svg');
   background-size: 62px 50px;
 }
 
 .skill-item:nth-child(2) {
-  background-image: url("./assets/svg/video.svg");
+  background-image: url('./assets/svg/video.svg');
   background-size: 60px 50px;
 }
 
 .skill-item:nth-child(3) {
-  background-image: url("./assets/svg/image.svg");
+  background-image: url('./assets/svg/image.svg');
   background-size: 66px 50px;
 }
 
 .skill-item:nth-child(4) {
-  background-image: url("./assets/svg/mic.svg");
+  background-image: url('./assets/svg/mic.svg');
   background-size: 32px 50px;
 }
 
@@ -305,12 +306,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("./assets/img/video-player.jpg");
+  background-image: url('./assets/img/video-player.jpg');
 }
 
 .video-player-btn {
   height: 130px;
   fill: var(--color-white);
+  cursor: pointer;
 }
 
 .video-player-btn:hover {
@@ -330,12 +332,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid #BDAE82;
+  border: 3px solid #bdae82;
 }
 
 .price-item-header {
   margin: 40px 0 20px 0;
-  font-family: "Merriweather", serif;
+  font-family: 'Merriweather', serif;
   font-weight: bold;
   font-size: 28px;
   line-height: 56px;
@@ -344,7 +346,7 @@ body {
 
 .price-item-amount {
   margin: 0;
-  font-family: "Merriweather", serif;
+  font-family: 'Merriweather', serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 48px;
@@ -355,7 +357,7 @@ body {
   margin: 0;
   margin-top: 20px;
   padding: 0;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
   line-height: 36px;
   text-align: center;
@@ -388,7 +390,7 @@ body {
 .contacts-title {
   margin-bottom: 40px;
   padding-top: 60px;
-  font-family: "Merriweather", serif;
+  font-family: 'Merriweather', serif;
   font-size: 40px;
   line-height: 80px;
   color: var(--color-gold);
@@ -405,7 +407,7 @@ body {
   width: 450px;
   height: 50px;
   padding: 3px 18px;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   line-height: 40px;
   color: var(--color-gold);
@@ -424,10 +426,57 @@ textarea.contacts-input {
   padding-top: 3px;
   padding-left: 18px;
   resize: none;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   line-height: 40px;
   color: var(--color-gold);
   border: 2px solid var(--color-gold);
   background: rgba(0, 0, 0, 0.5);
+}
+
+.footer-container {
+  height: 150px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 50px;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.footer-container > *:nth-child(2) {
+  padding-left: 20px;
+}
+
+.footer-copyright {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-container a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.footer-container a:hover {
+  color: var(--color-gold);
+}
+
+.socials-items {
+  display: flex;
+  gap: 20px;
+}
+
+.socials-item {
+  width: 32px;
+  fill: var(--color-white);
+  cursor: pointer;
+}
+
+.socials-item:hover {
+  fill: var(--color-gold);
 }
