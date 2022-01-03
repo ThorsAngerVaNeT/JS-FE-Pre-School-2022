@@ -20,7 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: var(--font2);
   font-weight: 400;
   line-height: 50px;
@@ -46,7 +46,7 @@ body {
   justify-content: flex-end;
   flex-wrap: wrap;
   align-items: center;
-  background: url('./assets/img/header-bg.jpg');
+  background: url("./assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-position: center 0;
 }
@@ -54,7 +54,7 @@ body {
 .logo {
   width: 50px;
   height: 50px;
-  background-image: url('./assets/svg/logo.svg');
+  background-image: url("./assets/svg/logo.svg");
   background-size: contain;
   background-repeat: no-repeat;
   transition: 0.3s;
@@ -118,7 +118,7 @@ body {
 
 .hero-container {
   margin: 0 -20px;
-  background-image: url('./assets/img/header-bg.jpg');
+  background-image: url("./assets/img/header-bg.jpg");
   background-position: center -90px;
   background-repeat: no-repeat;
 }
@@ -148,7 +148,7 @@ body {
 
 .hero-text h1 {
   margin: 0;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-size: var(--font1);
   line-height: 120px;
 }
@@ -199,7 +199,7 @@ body {
 .section-title {
   width: 700px;
   margin: 100px 0 60px 0;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-size: 40px;
   line-height: 80px;
   color: var(--color-gold);
@@ -210,14 +210,14 @@ body {
 }
 
 .section-title::before {
-  content: '';
+  content: "";
   border-top: 2px solid var(--color-gold);
   margin: 0 20px 0 0;
   flex: 1 0 20px;
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   border-top: 2px solid var(--color-gold);
   margin: 0 0 0 20px;
   flex: 1 0 20px;
@@ -238,22 +238,22 @@ body {
 }
 
 .skill-item:nth-child(1) {
-  background-image: url('./assets/svg/camera.svg');
+  background-image: url("./assets/svg/camera.svg");
   background-size: 62px 50px;
 }
 
 .skill-item:nth-child(2) {
-  background-image: url('./assets/svg/video.svg');
+  background-image: url("./assets/svg/video.svg");
   background-size: 60px 50px;
 }
 
 .skill-item:nth-child(3) {
-  background-image: url('./assets/svg/image.svg');
+  background-image: url("./assets/svg/image.svg");
   background-size: 66px 50px;
 }
 
 .skill-item:nth-child(4) {
-  background-image: url('./assets/svg/mic.svg');
+  background-image: url("./assets/svg/mic.svg");
   background-size: 32px 50px;
 }
 
@@ -306,7 +306,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('./assets/img/video-player.jpg');
+  background-image: url("./assets/img/video-player.jpg");
 }
 
 .video-player-btn {
@@ -337,7 +337,7 @@ body {
 
 .price-item-header {
   margin: 40px 0 20px 0;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-weight: bold;
   font-size: 28px;
   line-height: 56px;
@@ -346,7 +346,7 @@ body {
 
 .price-item-amount {
   margin: 0;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 48px;
@@ -357,7 +357,7 @@ body {
   margin: 0;
   margin-top: 20px;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 18px;
   line-height: 36px;
   text-align: center;
@@ -375,7 +375,7 @@ body {
   padding: 0;
   margin-top: 100px;
   margin-left: -20px;
-  background: url('./assets/img/contacts-bg.jpg');
+  background: url("./assets/img/contacts-bg.jpg");
   background-size: auto 700px;
   background-position: center center;
 }
@@ -390,7 +390,7 @@ body {
 .contacts-title {
   margin-bottom: 40px;
   padding-top: 60px;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-size: 40px;
   line-height: 80px;
   color: var(--color-gold);
@@ -407,7 +407,7 @@ body {
   width: 450px;
   height: 50px;
   padding: 3px 18px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 20px;
   line-height: 40px;
   color: var(--color-gold);
@@ -426,7 +426,7 @@ textarea.contacts-input {
   padding-top: 3px;
   padding-left: 18px;
   resize: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 20px;
   line-height: 40px;
   color: var(--color-gold);
@@ -440,7 +440,7 @@ textarea.contacts-input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 50px;
