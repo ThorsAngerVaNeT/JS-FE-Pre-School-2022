@@ -162,6 +162,7 @@ body {
   width: 220px;
   height: 55px;
   border: 0;
+  padding: 8px 0 7px 0;
   background-color: var(--color-gold);
   cursor: pointer;
   font-size: 20px;
@@ -175,6 +176,7 @@ body {
 .black-btn {
   width: 220px;
   height: 55px;
+  padding: 8px 0 7px 0;
   font-size: 20px;
   font-family: inherit;
   cursor: pointer;
@@ -384,9 +386,48 @@ body {
 }
 
 .contacts-title {
+  margin-bottom: 40px;
   padding-top: 60px;
   font-family: "Merriweather", serif;
   font-size: 40px;
   line-height: 80px;
   color: var(--color-gold);
+}
+
+.contacts-inputs {
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contacts-input {
+  width: 450px;
+  height: 50px;
+  padding: 3px 18px;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.contacts-input::placeholder {
+  z-index: 1;
+  color: var(--color-gold);
+}
+
+textarea.contacts-input {
+  width: 450px;
+  height: 100px;
+  padding-top: 3px;
+  padding-left: 18px;
+  resize: none;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 40px;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  background: rgba(0, 0, 0, 0.5);
 }
