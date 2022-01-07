@@ -456,7 +456,7 @@ textarea.contacts-input {
 }
 
 .footer-container > *:nth-child(2) {
-  padding-left: 20px;
+  padding-left: 60px;
 }
 
 .footer-copyright {
@@ -475,8 +475,10 @@ textarea.contacts-input {
 }
 
 .socials-items {
+  margin-top: 40px;
   display: flex;
   gap: 20px;
+  list-style: none;
 }
 
 .socials-item {
