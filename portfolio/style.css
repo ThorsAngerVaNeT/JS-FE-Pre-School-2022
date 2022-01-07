@@ -126,12 +126,14 @@ body {
   width: 30px;
   height: 30px;
   fill: var(--color-white);
+  transition: 0.5s;
 }
 
 .logo {
   width: 50px;
   height: 50px;
   fill: var(--color-white);
+  transition: 0.5s;
 }
 
 .icon:hover,
@@ -167,6 +169,7 @@ body {
   cursor: pointer;
   font-size: 20px;
   font-family: inherit;
+  transition: 0.5s;
 }
 
 .gold-btn:hover {
@@ -183,6 +186,7 @@ body {
   color: var(--color-gold);
   border: 2px solid var(--color-gold);
   background-color: transparent;
+  transition: 0.5s;
 }
 
 .black-btn:hover {
@@ -315,6 +319,7 @@ body {
   border-style: none;
   filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(134deg) brightness(107%) contrast(107%);
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .video-player-btn:hover {
@@ -462,6 +467,7 @@ textarea.contacts-input {
 .footer-container a {
   text-decoration: none;
   color: var(--color-white);
+  transition: 0.5s;
 }
 
 .footer-container a:hover {
@@ -477,6 +483,7 @@ textarea.contacts-input {
   width: 32px;
   fill: var(--color-white);
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .socials-item:hover {
