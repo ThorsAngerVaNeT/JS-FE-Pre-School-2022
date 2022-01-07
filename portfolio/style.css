@@ -61,8 +61,7 @@ body {
 }
 
 .logo:hover {
-  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
-    contrast(87%);
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
 }
 
 .nav {
@@ -310,13 +309,16 @@ body {
 }
 
 .video-player-btn {
+  width: 129.86px;
   height: 130px;
-  fill: var(--color-white);
+  background: url("./assets/svg/Play_hover.svg") no-repeat;
+  border-style: none;
+  filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(134deg) brightness(107%) contrast(107%);
   cursor: pointer;
 }
 
 .video-player-btn:hover {
-  fill: var(--color-gold);
+  filter: invert(73%) sepia(31%) saturate(324%) hue-rotate(7deg) brightness(91%) contrast(87%);
 }
 
 .price-items {
