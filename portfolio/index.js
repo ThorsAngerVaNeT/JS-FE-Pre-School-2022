@@ -16,3 +16,17 @@ console.log(
   'color: green',
   ''
 );
+
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function toggleMenu() {
+  hamburger.classList.toggle('open');
+  nav.classList.toggle('open');
+}
+hamburger.addEventListener('click', toggleMenu);
+
+for (let i = 0; i < navLinks.length; i++) {
+  navLinks[i].addEventListener('click', toggleMenu);
+}
