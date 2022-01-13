@@ -567,6 +567,10 @@ textarea.contacts-input {
   transition: all 0.3s ease-in-out;
 }
 
+.hamburger:hover > .line {
+  background: var(--color-gold);
+}
+
 .hamburger.open .line1 {
   width: 60px;
   -webkit-transform: translateY(13px) rotate(45deg);
@@ -624,10 +628,6 @@ textarea.contacts-input {
     flex-grow: 1;
   }
 
-  .hero-text {
-    height: 500px;
-  }
-
   .switch-lng span:not(.lng-active)::before {
     content: "\00a0\00a0";
   }
@@ -668,6 +668,29 @@ textarea.contacts-input {
   .hamburger.open {
     right: 64px;
     transition: 0.5s;
+  }
+
+  .hero-text {
+    max-width: 500px;
+    margin-left: 60px;
+    padding-top: 78px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 64px;
+  }
+
+  .hero-text p {
+    width: 390px;
+    margin-top: 20px;
+    line-height: 24px;
+  }
+
+  .hero-container button {
+    margin-top: 40px;
   }
 
   .portfolio-btns {
