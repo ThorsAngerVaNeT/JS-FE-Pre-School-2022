@@ -392,7 +392,9 @@ body {
 .price-items {
   margin-bottom: 100px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
   align-items: center;
 }
 
@@ -769,6 +771,14 @@ textarea.contacts-input {
     margin: 171px 347px 172px 346px;
     background-size: 64.62px 64.69px;
     background-position: top 6px right 6px;
+  }
+
+  .price-items {
+    gap: 50px;
+  }
+
+  .price-item {
+    width: 420px;
   }
 
   .contacts-container {
