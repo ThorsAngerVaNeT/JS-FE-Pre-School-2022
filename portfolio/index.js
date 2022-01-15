@@ -19,14 +19,17 @@ console.log(
 
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav');
-const navLinks = document.querySelectorAll('.nav-link');
 
 function toggleMenu() {
   hamburger.classList.toggle('open');
   nav.classList.toggle('open');
 }
-hamburger.addEventListener('click', toggleMenu);
 
-for (let i = 0; i < navLinks.length; i++) {
-  navLinks[i].addEventListener('click', toggleMenu);
+function closeMenu(event) {
+  if (event.target.classList.contains('nav-link')) {
+    hamburger.classList.toggle('open');
+    nav.classList.toggle('open');
+  }
 }
+hamburger.addEventListener('click', toggleMenu);
+nav.addEventListener('click', closeMenu);

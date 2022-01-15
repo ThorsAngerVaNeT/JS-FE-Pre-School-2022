@@ -238,8 +238,14 @@ body {
   transition: 0.5s;
 }
 
-.black-btn:hover {
+.black-btn:hover,
+.black-btn:focus:hover {
   color: var(--color-white);
+}
+
+.black-btn:focus {
+  color: var(--color-black);
+  background-color: var(--color-gold);
 }
 
 .title-wrapper {
@@ -693,6 +699,54 @@ textarea.contacts-input {
     margin-top: 40px;
   }
 
+  .title-wrapper {
+    width: 47.5%;
+  }
+
+  .section-title {
+    margin: 80px 0 50px 0;
+    font-size: 32px;
+    line-height: 80px;
+  }
+
+  .section-title:before {
+    right: 20px;
+  }
+
+  .section-title:after {
+    left: 20px;
+  }
+
+  .skills-items {
+    margin: -14px 20px 4px 20px;
+    padding: 9px 0 0 40px;
+    justify-content: normal;
+    /*row-gap: 36px;
+    column-gap: 44px; */
+  }
+
+  .skill-item {
+    margin: 0 44px 36px 0;
+    width: 300px;
+    height: 224px;
+  }
+
+  .skill-item-header {
+    margin: 0;
+    padding-top: 80px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .skill-item-text {
+    width: 280px;
+    margin: 20px 10px 40px 10px;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+  }
   .portfolio-btns {
     max-width: 445px;
     margin: 0 auto;
