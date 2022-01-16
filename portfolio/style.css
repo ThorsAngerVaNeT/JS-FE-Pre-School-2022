@@ -84,22 +84,22 @@ body {
 }
 
 .nav {
-  width: 500px;
+  width: 84.375vw;
   margin-right: 31px;
+  transition: right 500ms ease-in;
 }
 
 .nav.open {
-  width: 620px;
+  max-width: 620px;
   display: block;
   right: 0;
   margin-right: 0px;
   z-index: 1;
-  transition: right 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .nav.open .nav-list {
-  width: 620px;
-  height: 1024px;
+  /* max-width: 620px; */
+  height: 100vh;
   margin: 0;
   padding: 134px 0 0 96px;
   right: 0;
