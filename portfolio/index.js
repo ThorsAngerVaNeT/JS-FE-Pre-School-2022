@@ -31,11 +31,19 @@ function closeMenu(event) {
     nav.classList.toggle('open');
   }
 }
+
 hamburger.addEventListener('click', toggleMenu);
 nav.addEventListener('click', closeMenu);
 
-const btn = document.querySelector('.portfolio-btns > button:last-child');
+const btn = document.querySelector('.portfolio-btns');
 
-btn.focus({
-  preventScroll: true,
-});
+btn.addEventListener('click', selectBtn);
+
+function selectBtn(event) {
+  if (event.target.classList.contains('black-btn')) {
+    for (const btn of document.querySelectorAll('.black-btn')) {
+      btn.classList.remove('selected');
+    }
+    event.target.classList.toggle('selected');
+  }
+}
