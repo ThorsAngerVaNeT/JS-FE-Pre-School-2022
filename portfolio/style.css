@@ -114,7 +114,8 @@ body {
 }
 
 .switch-lng {
-  width: 70px;
+  max-width: 70px;
+  width: 17%;
   height: 50px;
   font-size: 20px;
   font-weight: bold;
