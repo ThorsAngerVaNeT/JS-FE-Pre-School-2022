@@ -33,3 +33,9 @@ function closeMenu(event) {
 }
 hamburger.addEventListener('click', toggleMenu);
 nav.addEventListener('click', closeMenu);
+
+const btn = document.querySelector('.portfolio-btns > button:last-child');
+
+btn.focus({
+  preventScroll: true,
+});
