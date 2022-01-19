@@ -76,7 +76,7 @@ body {
 }
 
 .logo:hover {
-  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+  fill: var(--color-gold);
 }
 
 .header-menu {
