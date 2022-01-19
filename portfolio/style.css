@@ -86,7 +86,6 @@ body {
 
 .nav {
   margin-right: 31px;
-  /* transition: all 500ms ease-in; */
   transition: all 500ms linear;
 }
 
@@ -648,9 +647,11 @@ textarea.contacts-input {
   .nav-list {
     position: absolute;
     z-index: 1;
+    right: -620px;
     overflow-x: hidden;
-    display: none;
+    /* display: none; */
     flex-direction: column;
+    transition: all 500ms linear;
   }
 
   .nav.open {
@@ -672,7 +673,6 @@ textarea.contacts-input {
     justify-content: start;
     align-items: start;
     gap: 16px;
-    /* transition: ease-in-out 1s; */
     box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
     background-color: var(--color-black);
   }
