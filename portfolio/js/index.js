@@ -89,3 +89,19 @@ const switchLang = (event) => {
 };
 
 langSwitches.addEventListener('click', switchLang);
+
+const themeSwitch = document.querySelector('.theme-switch');
+const switchTheme = () => {
+  const themes = { sun: 'Light', moon: 'Dark' };
+  // themeSwitch.classList.toggle('moon');
+  const iconEl = themeSwitch.lastElementChild,
+    titleEl = themeSwitch.firstElementChild;
+  const dataIcon = iconEl.dataset.icon === 'sun' ? 'moon' : 'sun';
+  const themeText = themes[dataIcon];
+  iconEl.setAttribute('xlink:href', `./assets/svg/sprite.svg#${dataIcon}`);
+  iconEl.dataset.icon = dataIcon;
+  titleEl.textContent = `Switch to ${themeText} Theme`;
+  document.body.classList.toggle('light');
+};
+
+themeSwitch.addEventListener('click', switchTheme);

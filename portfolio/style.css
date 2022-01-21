@@ -136,6 +136,31 @@ body {
   color: var(--color-gold);
 }
 
+.theme-switch {
+  width: 45px;
+  height: 45px;
+  margin: 22px 1px 23px 30px;
+  /* background-image: url("./assets/svg/sun.svg"); */
+  fill: var(--color-white);
+  transition: hover 0.3s;
+  cursor: pointer;
+}
+
+/* .moon {
+  width: 40.82px;
+  height: 40px;
+  background-image: url("./assets/svg/moon.svg");
+  background-size: 40.82px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: hover 0.3s;
+  cursor: pointer;
+} */
+
+.theme-switch:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
 .hero-container {
   height: 820px;
   margin: 0 -20px;
@@ -849,4 +874,31 @@ textarea.contacts-input {
   .socials-item {
     padding-top: 9px;
   }
+}
+
+body.light,
+body.light .section-title {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+body.light .section-title:after,
+body.light .section-title:before,
+body.light .footer-container {
+  background-color: var(--color-black);
+}
+
+body.light .hero-container {
+  color: var(--color-white);
+}
+
+body.light .portfolio-btn,
+body.light .price-item-header,
+body.light .price-item-list {
+  color: var(--color-black);
+}
+
+body.light .portfolio-btn:hover {
+  background-color: var(--color-gold);
+  color: var(--color-white);
 }
