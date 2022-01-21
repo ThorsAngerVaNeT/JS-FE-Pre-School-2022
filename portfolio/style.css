@@ -785,7 +785,7 @@ textarea.contacts-input {
     position: absolute;
     width: 75px;
     height: 75px;
-    margin: 171px 347px 172px 346px;
+    /* margin: 171px 347px 172px 346px; */
     background-size: 64.62px 64.69px;
     background-position: top 6px right 6px;
   }
