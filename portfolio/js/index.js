@@ -1,3 +1,5 @@
+import i18Obj from './translate.js';
+
 console.log(
   'Portfolio#2. Самооценка 85/85 баллов:\n' +
     '%c\t\u2713 %cВёрстка соответствует макету. Ширина экрана 768px +48\n' +
@@ -42,12 +44,12 @@ const preloadImages = () => {
 
 preloadImages();
 
+const changeClassActive = (className, target) => {
+  target.classList.add(className);
+};
+
 const portfolioBtns = document.querySelector('.portfolio-btns');
 const portfolioImages = document.querySelectorAll('.portfolio-item > img');
-
-const changeClassActive = (className, target) => {
-  target.classList.add('selected');
-};
 
 const changeImages = (event) => {
   if (event.target.classList.contains('portfolio-btn')) {
@@ -67,3 +69,23 @@ const changeImages = (event) => {
 };
 
 portfolioBtns.addEventListener('click', changeImages);
+
+const getTranslate = (lang) => {
+  for (const el of document.querySelectorAll('[data-i18]')) {
+    el.textContent = i18Obj[lang][el.dataset.i18];
+    el.title = i18Obj[lang][el.dataset.i18];
+    el.alt = i18Obj[lang][el.dataset.i18];
+    el.placeholder = i18Obj[lang][el.dataset.i18];
+  }
+};
+
+const langSwitches = document.querySelector('.switch-lng');
+const switchLang = (event) => {
+  if (event.target.dataset.hasOwnProperty('lang')) {
+    getTranslate(event.target.dataset.lang);
+    document.querySelector('.lng-active').classList.remove('lng-active');
+    changeClassActive('lng-active', event.target);
+  }
+};
+
+langSwitches.addEventListener('click', switchLang);
