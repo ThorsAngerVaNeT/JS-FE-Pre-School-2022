@@ -358,7 +358,7 @@ body {
   border-style: none;
   filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(134deg) brightness(107%) contrast(107%);
   cursor: pointer;
-  transition: 0.5s;
+  transition: hover 0.5s;
 }
 
 .video-player-btn:hover {
@@ -559,6 +559,9 @@ textarea.contacts-input {
   background: var(--color-gold);
 }
 
+.hamburger.open {
+  position: fixed;
+}
 .hamburger.open .line1 {
   width: 60px;
   -webkit-transform: translateY(13px) rotate(45deg);
@@ -785,7 +788,7 @@ textarea.contacts-input {
     position: absolute;
     width: 75px;
     height: 75px;
-    margin: 171px 347px 172px 346px;
+    /* margin: 171px 347px 172px 346px; */
     background-size: 64.62px 64.69px;
     background-position: top 6px right 6px;
   }
