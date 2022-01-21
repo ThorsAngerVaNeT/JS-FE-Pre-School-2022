@@ -196,11 +196,11 @@ body {
 }
 
 .gold-btn:hover,
-.black-btn.selected:hover {
+.portfolio-btn.selected:hover {
   color: var(--color-white);
 }
 
-.black-btn {
+.portfolio-btn {
   width: 220px;
   height: 55px;
   padding: 8px 0 7px 0;
@@ -213,13 +213,13 @@ body {
   transition: 0.5s;
 }
 
-.black-btn:hover,
-.black-btn:focus:hover {
+.portfolio-btn:hover,
+.portfolio-btn:focus:hover {
   color: var(--color-white);
 }
 
-.black-btn:focus,
-.black-btn.selected {
+.portfolio-btn:focus,
+.portfolio-btn.selected {
   color: var(--color-black);
   background-color: var(--color-gold);
 }

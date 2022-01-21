@@ -14,30 +14,56 @@ console.log(
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav');
 
-function toggleMenu() {
+const toggleMenu = () => {
   hamburger.classList.toggle('open');
   nav.classList.toggle('open');
-}
+};
 
-function closeMenu(event) {
+const closeMenu = (event) => {
   if (event.target.classList.contains('nav-link')) {
     hamburger.classList.toggle('open');
     nav.classList.toggle('open');
   }
-}
+};
 
 hamburger.addEventListener('click', toggleMenu);
 nav.addEventListener('click', closeMenu);
 
-const btn = document.querySelector('.portfolio-btns');
+const seasons = ['winter', 'spring', 'summer', 'autumn'];
 
-btn.addEventListener('click', selectBtn);
+const preloadImages = () => {
+  for (const season of seasons) {
+    for (let i = 1; i <= 6; i++) {
+      const img = new Image();
+      img.src = `./assets/img/${season}/${i}.jpg`;
+    }
+  }
+};
 
-function selectBtn(event) {
-  if (event.target.classList.contains('black-btn')) {
-    for (const btn of document.querySelectorAll('.black-btn')) {
+preloadImages();
+
+const portfolioBtns = document.querySelector('.portfolio-btns');
+const portfolioImages = document.querySelectorAll('.portfolio-item > img');
+
+const changeClassActive = (className, target) => {
+  target.classList.add('selected');
+};
+
+const changeImages = (event) => {
+  if (event.target.classList.contains('portfolio-btn')) {
+    for (const btn of document.querySelectorAll('.portfolio-btn')) {
       btn.classList.remove('selected');
     }
-    event.target.classList.toggle('selected');
+    changeClassActive('selected', event.target);
+
+    const season = event.target.dataset.season;
+    portfolioImages.forEach((img, i) => {
+      img.src = `./assets/img/${season}/${i + 1}.jpg`;
+      img.alt = `Portfolio ${season[0].toUpperCase()}${season.slice(1)} Photo ${
+        i + 1
+      }`;
+    });
   }
-}
+};
+
+portfolioBtns.addEventListener('click', changeImages);
