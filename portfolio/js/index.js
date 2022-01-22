@@ -110,5 +110,3 @@ const switchTheme = () => {
 themeSwitch.addEventListener('click', switchTheme);
 
 // TODO localStorage settings save
-// TODO 768px themeSwitch placement
-
