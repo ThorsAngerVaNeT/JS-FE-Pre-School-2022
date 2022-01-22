@@ -877,19 +877,18 @@ textarea.contacts-input {
 }
 
 body.light,
-body.light .section-title {
+body.light .section-title,
+body.light .nav.open .nav-list,
+body.light .nav.open .nav-link {
   background-color: var(--color-white);
   color: var(--color-black);
 }
 
 body.light .section-title:after,
 body.light .section-title:before,
+body.light .hamburger.open .line,
 body.light .footer-container {
   background-color: var(--color-black);
-}
-
-body.light .hero-container {
-  color: var(--color-white);
 }
 
 body.light .portfolio-btn,
@@ -898,7 +897,16 @@ body.light .price-item-list {
   color: var(--color-black);
 }
 
+body.light .hero-container/*,
+body.light .selected*/ {
+  color: var(--color-white);
+}
+
 body.light .portfolio-btn:hover {
   background-color: var(--color-gold);
   color: var(--color-white);
+}
+
+body.light .nav.open .nav-link:hover {
+  color: var(--color-gold);
 }

@@ -22,7 +22,10 @@ const toggleMenu = () => {
 };
 
 const closeMenu = (event) => {
-  if (event.target.classList.contains('nav-link')) {
+  if (
+    event.target.classList.contains('nav-link') &&
+    event.target.closest('.nav').classList.contains('open')
+  ) {
     hamburger.classList.toggle('open');
     nav.classList.toggle('open');
   }
@@ -92,7 +95,7 @@ langSwitches.addEventListener('click', switchLang);
 
 const themeSwitch = document.querySelector('.theme-switch');
 const switchTheme = () => {
-  const themes = { sun: 'Light', moon: 'Dark' };
+  const themes = { moon: 'Light', sun: 'Dark' };
   // themeSwitch.classList.toggle('moon');
   const iconEl = themeSwitch.lastElementChild,
     titleEl = themeSwitch.firstElementChild;
@@ -105,3 +108,8 @@ const switchTheme = () => {
 };
 
 themeSwitch.addEventListener('click', switchTheme);
+
+// TODO localStorage settings save
+// TODO 768px themeSwitch placement
+// TODO hover link in slide menu
+// TODO scale for portfolio imgs
