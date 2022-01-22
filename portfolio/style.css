@@ -797,6 +797,8 @@ textarea.contacts-input {
   .video-player-btn {
     width: 75px;
     height: 75px;
+    top: 0;
+    left: 6px;
     background-size: 64.62px 64.69px;
   }
 
