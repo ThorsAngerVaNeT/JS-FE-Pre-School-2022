@@ -111,5 +111,4 @@ themeSwitch.addEventListener('click', switchTheme);
 
 // TODO localStorage settings save
 // TODO 768px themeSwitch placement
-// TODO hover link in slide menu
-// TODO scale for portfolio imgs
+

@@ -367,6 +367,10 @@ body {
   max-height: 560px;
 }
 
+.portfolio-item img {
+  transition: 0.5s ease-in;
+}
+
 .video-player {
   height: 705px;
   position: relative;
@@ -907,6 +911,14 @@ body.light .portfolio-btn:hover {
   color: var(--color-white);
 }
 
+body.light .hamburger.open:hover > .line {
+  background-color: var(--color-gold);
+}
+
 body.light .nav.open .nav-link:hover {
   color: var(--color-gold);
+}
+
+.portfolio-item img:hover {
+  transform: scale(1.05);
 }
