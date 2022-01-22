@@ -875,7 +875,11 @@ textarea.contacts-input {
   }
 }
 
-body.light,
+body.light {
+  background-color: var(--color-black);
+  color: var(--color-black);
+}
+body.light .container,
 body.light .section-title,
 body.light .nav.open .nav-list,
 body.light .nav.open .nav-link {
@@ -896,7 +900,8 @@ body.light .price-item-list {
   color: var(--color-black);
 }
 
-body.light .hero-container/*,
+body.light .hero-container,
+body.light .footer-copyright/*,
 body.light .selected*/ {
   color: var(--color-white);
 }
