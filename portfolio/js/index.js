@@ -37,6 +37,7 @@ nav.addEventListener('click', closeMenu);
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
 
 const preloadImages = () => {
+  console.log('preload images');
   for (const season of seasons) {
     for (let i = 1; i <= 6; i++) {
       const img = new Image();
@@ -82,31 +83,65 @@ const getTranslate = (lang) => {
   }
 };
 
+const setActiveLng = (lang) => {
+  const langSwitcher = document.querySelector(
+    `.switch-lng > span[data-lang='${lang}']`
+  );
+  document.querySelector('.lng-active').classList.remove('lng-active');
+  changeClassActive('lng-active', langSwitcher);
+};
+
 const langSwitches = document.querySelector('.switch-lng');
 const switchLang = (event) => {
   if (event.target.dataset.hasOwnProperty('lang')) {
     getTranslate(event.target.dataset.lang);
-    document.querySelector('.lng-active').classList.remove('lng-active');
-    changeClassActive('lng-active', event.target);
+    setActiveLng(event.target.dataset.lang);
   }
 };
 
 langSwitches.addEventListener('click', switchLang);
 
 const themeSwitch = document.querySelector('.theme-switch');
-const switchTheme = () => {
-  const themes = { moon: 'Light', sun: 'Dark' };
-  // themeSwitch.classList.toggle('moon');
-  const iconEl = themeSwitch.lastElementChild,
-    titleEl = themeSwitch.firstElementChild;
-  const dataIcon = iconEl.dataset.icon === 'sun' ? 'moon' : 'sun';
-  const themeText = themes[dataIcon];
-  iconEl.setAttribute('xlink:href', `./assets/svg/sprite.svg#${dataIcon}`);
-  iconEl.dataset.icon = dataIcon;
+const iconEl = themeSwitch.lastElementChild,
+  titleEl = themeSwitch.firstElementChild;
+const themes = { moon: 'Light', sun: 'Dark' };
+
+const setActiveTheme = (icon) => {
+  const themeText = themes[icon];
+  iconEl.setAttribute('xlink:href', `./assets/svg/sprite.svg#${icon}`);
+  iconEl.dataset.icon = icon;
   titleEl.textContent = `Switch to ${themeText} Theme`;
-  document.body.classList.toggle('light');
+  icon === 'sun'
+    ? document.body.classList.remove('light')
+    : document.body.classList.add('light');
+};
+
+const switchTheme = () => {
+  const dataIcon = iconEl.dataset.icon === 'sun' ? 'moon' : 'sun';
+  setActiveTheme(dataIcon);
 };
 
 themeSwitch.addEventListener('click', switchTheme);
 
 // TODO localStorage settings save
+
+function setLocalStorage() {
+  const lang = document.querySelector('.lng-active').dataset.lang;
+  localStorage.setItem('lang', lang);
+  const theme = document.querySelector('.theme-switch use').dataset.icon;
+  localStorage.setItem('theme', theme);
+}
+window.addEventListener('beforeunload', setLocalStorage);
+
+function getLocalStorage() {
+  if (localStorage.getItem('lang')) {
+    const lang = localStorage.getItem('lang');
+    setActiveLng(lang);
+    getTranslate(lang);
+  }
+  if (localStorage.getItem('theme')) {
+    setActiveTheme(localStorage.getItem('theme'));
+  }
+}
+window.addEventListener('load', getLocalStorage);
+window.addEventListener('load', preloadImages);

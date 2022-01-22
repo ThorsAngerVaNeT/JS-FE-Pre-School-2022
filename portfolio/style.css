@@ -383,7 +383,7 @@ body {
   top: -10px;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 2px;
   background: url("./assets/svg/Play_hover.svg") no-repeat;
   border-style: none;
   filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(134deg) brightness(107%) contrast(107%);
@@ -822,6 +822,8 @@ textarea.contacts-input {
   .video-player-btn {
     width: 75px;
     height: 75px;
+    top: 0;
+    left: 6px;
     background-size: 64.62px 64.69px;
   }
 
