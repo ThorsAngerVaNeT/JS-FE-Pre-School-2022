@@ -115,7 +115,7 @@ body {
 
 .switch-lng {
   max-width: 70px;
-  width: 17%;
+  /* width: 17%; */
   height: 50px;
   font-size: 20px;
   font-weight: bold;
@@ -140,22 +140,10 @@ body {
   width: 45px;
   height: 45px;
   margin: 22px 1px 23px 30px;
-  /* background-image: url("./assets/svg/sun.svg"); */
   fill: var(--color-white);
   transition: hover 0.3s;
   cursor: pointer;
 }
-
-/* .moon {
-  width: 40.82px;
-  height: 40px;
-  background-image: url("./assets/svg/moon.svg");
-  background-size: 40.82px 40px;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: hover 0.3s;
-  cursor: pointer;
-} */
 
 .theme-switch:hover {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
@@ -642,14 +630,20 @@ textarea.contacts-input {
   }
 
   .switch-lng {
-    /* padding-left: 442px; */
     position: absolute;
-    right: 146px;
-    flex-grow: 1;
+    /* right: 146px; */
+    right: 219px;
+    /* flex-grow: 1; */
   }
 
-  .switch-lng span:not(.lng-active)::before {
+  /* .switch-lng span:not(.lng-active)::before {
     content: "\00a0\00a0";
+  } */
+
+  .theme-switch {
+    position: absolute;
+    right: 144px;
+    top: 0px;
   }
 
   .hamburger {
@@ -665,6 +659,7 @@ textarea.contacts-input {
     cursor: pointer;
     user-select: none;
     z-index: 2;
+    transition: right 0.5s;
   }
 
   .header-menu {
@@ -719,7 +714,6 @@ textarea.contacts-input {
 
   .hamburger.open {
     right: 64px;
-    transition: 0.5s;
   }
 
   .hero-text {
@@ -853,7 +847,8 @@ textarea.contacts-input {
   }
 
   .footer-container {
-    margin-bottom: 40px;
+    height: 190px;
+    padding-bottom: 40px;
     padding-top: 28px;
     flex-direction: column;
     align-items: center;
@@ -921,4 +916,45 @@ body.light .nav.open .nav-link:hover {
 
 .portfolio-item img:hover {
   transform: scale(1.05);
+}
+
+@media (max-width: 425px) {
+  .header-container {
+    padding: 0 15px;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  /* .hamburger, */
+  .switch-lng,
+  .theme-switch,
+  .header-menu {
+    margin: 0;
+    position: static;
+    top: 0;
+    right: 0;
+  }
+
+  .header-menu {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header-container {
+    justify-content: start;
+  }
+
+  .hamburger {
+    margin: 0;
+    position: static;
+    top: 0;
+    right: 0;
+  }
+
+  .hamburger.open {
+    right: 20px;
+    top: 20px;
+  }
 }
