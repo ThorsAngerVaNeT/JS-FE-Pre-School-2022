@@ -104,13 +104,15 @@ langSwitches.addEventListener('click', switchLang);
 const themeSwitch = document.querySelector('.theme-switch');
 const iconEl = themeSwitch.lastElementChild,
   titleEl = themeSwitch.firstElementChild;
-const themes = { moon: 'Light', sun: 'Dark' };
+const themes = { moon: 'dark', sun: 'light' };
 
 const setActiveTheme = (icon) => {
   const themeText = themes[icon];
   iconEl.setAttribute('xlink:href', `./assets/svg/sprite.svg#${icon}`);
   iconEl.dataset.icon = icon;
-  titleEl.textContent = `Switch to ${themeText} Theme`;
+  titleEl.dataset.i18 = `${themes[icon]}-theme`;
+  titleEl.textContent =
+    i18Obj[localStorage.getItem('lang') || 'en'][titleEl.dataset.i18];
   icon === 'sun'
     ? document.body.classList.remove('light')
     : document.body.classList.add('light');

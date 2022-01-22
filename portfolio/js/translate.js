@@ -42,6 +42,8 @@ export default {
     phone: 'Phone',
     message: 'Message',
     'send-message': 'Send message',
+    'light-theme': 'Switch to Light Theme',
+    'dark-theme': 'Switch to Dark Theme',
   },
   ru: {
     skills: 'Навыки',
@@ -88,5 +90,7 @@ export default {
     phone: 'Телефон',
     message: 'Сообщение',
     'send-message': 'Отправить',
+    'light-theme': 'Изменить на Светлое оформление',
+    'dark-theme': 'Изменить на Тёмное оформление',
   },
 };
