@@ -211,16 +211,25 @@ body {
   height: 55px;
   border: 0;
   padding: 8px 0 7px 0;
+  position: relative;
   background-color: var(--color-gold);
   cursor: pointer;
   font-size: 20px;
   font-family: inherit;
-  transition: 0.5s;
+  transition: color 0.5s;
 }
 
 .gold-btn:hover,
 .portfolio-btn.selected:hover {
   color: var(--color-white);
+}
+
+.gold-btn:active {
+  top: 2px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--color-gold), 0 0 15px var(--color-gold), 0 0 30px var(--color-gold),
+    0 0 50px var(--color-gold);
+  transition: 0.2s;
 }
 
 .portfolio-btn {
