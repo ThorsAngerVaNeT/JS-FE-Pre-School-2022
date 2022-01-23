@@ -142,12 +142,21 @@ body {
   height: 45px;
   margin: 22px 1px 23px 30px;
   fill: var(--color-white);
+  background: none;
   transition: hover 0.3s;
   cursor: pointer;
 }
 
 .theme-switch:hover {
   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+  box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+  border-radius: 30px;
+  animation: pulse 1s;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-white);
+  }
 }
 
 .hero-container {
@@ -224,7 +233,7 @@ body {
   color: var(--color-gold);
   border: 2px solid var(--color-gold);
   background-color: transparent;
-  transition: 0.5s;
+  transition: 1s;
 }
 
 .portfolio-btn:hover,
@@ -235,7 +244,8 @@ body {
 .portfolio-btn:focus,
 .portfolio-btn.selected {
   color: var(--color-black);
-  background-color: var(--color-gold);
+  /* background-color: var(--color-gold); */
+  box-shadow: inset 220px 0 0 0 var(--color-gold);
 }
 
 .title-wrapper {
@@ -612,6 +622,55 @@ textarea.contacts-input {
   transform: translateY(-13px) rotate(-45deg);
 }
 
+.socials-items {
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.socials-items > li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 50px; */
+  height: 50px;
+}
+
+.tooltip {
+  padding: 0px 8px;
+  position: absolute;
+  top: 0;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  font-size: 13px;
+  line-height: 26px;
+  border-radius: 5px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background-color: var(--color-gold);
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.socials-items > li:hover .tooltip {
+  top: -30px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 @media (max-width: 1440px) {
   .nav-list {
     display: flex;
@@ -884,6 +943,13 @@ textarea.contacts-input {
   .socials-item {
     padding-top: 9px;
   }
+
+  .socials-items > li:hover .tooltip {
+    top: -15px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 body.light,
@@ -912,8 +978,10 @@ body.light .selected*/ {
   color: var(--color-white);
 }
 
-body.light .portfolio-btn:hover {
-  background-color: var(--color-gold);
+body.light .portfolio-btn:hover,
+body.light .portfolio-btn.selected {
+  /* background-color: var(--color-gold); */
+  box-shadow: inset 13em 0 0 0 var(--color-gold);
   color: var(--color-white);
 }
 
