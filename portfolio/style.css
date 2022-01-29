@@ -374,6 +374,10 @@ body {
   max-width: 450px;
   max-height: 560px;
 }
+.video-player-wrapper {
+  position: relative;
+  margin-bottom: -11px;
+}
 
 .portfolio-item img {
   transition: 0.5s ease-in;
