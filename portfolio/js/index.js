@@ -77,9 +77,12 @@ portfolioBtns.addEventListener('click', changeImages);
 const getTranslate = (lang) => {
   for (const el of document.querySelectorAll('[data-i18]')) {
     el.textContent = i18Obj[lang][el.dataset.i18];
-    el.title = i18Obj[lang][el.dataset.i18];
-    el.alt = i18Obj[lang][el.dataset.i18];
-    el.placeholder = i18Obj[lang][el.dataset.i18];
+    // if (el.alt) el.alt = i18Obj[lang][el.dataset.i18];
+    if (el.title) el.title = i18Obj[lang][el.dataset.i18];
+    if (el.placeholder) {
+      el.placeholder = i18Obj[lang][el.dataset.i18];
+      el.textContent = '';
+    }
   }
 };
 
