@@ -138,8 +138,6 @@ const switchTheme = () => {
 
 themeSwitch.addEventListener('click', switchTheme);
 
-// TODO localStorage settings save
-
 function setLocalStorage() {
   const lang = document.querySelector('.lng-active').dataset.lang;
   localStorage.setItem('lang', lang);
