@@ -1,10 +1,20 @@
 import i18Obj from './translate.js';
 
 console.log(
-  'Portfolio#2. Самооценка 85/85 баллов:\n' +
-    '%c\t\u2713 %cВёрстка соответствует макету. Ширина экрана 768px +48\n' +
-    '%c\t\u2713 %cНи на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +15\n' +
-    '%c\t\u2713 %cНа ширине экрана 768рх и меньше реализовано адаптивное меню +22\n',
+  'Portfolio#3. Самооценка 85/85 баллов:\n' +
+    '%c\t\u2713 %cСмена изображений в секции portfolio +25\n' +
+    '%c\t\u2713 %cПеревод страницы на два языка +25\n' +
+    '%c\t\u2713 %cПереключение светлой и тёмной темы +25\n' +
+    '%c\t\u2713 %cДополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема сохраняются при перезагрузке страницы +5\n' +
+    '%c\t\u2713 %cДополнительный функционал: сложные эффекты для кнопок при наведении и/или клике +5:\n' +
+    '\t\t1) при наведении на иконку смены темы;\n' +
+    '\t\t2) при длительном клике на золотые кнопки;\n' +
+    '\t\t3) переключение сезона в разделе Portfolio;\n' +
+    '\t\t4) при наведении на иконки соцсетей.',
+  'color: green',
+  '',
+  'color: green',
+  '',
   'color: green',
   '',
   'color: green',
@@ -37,7 +47,7 @@ nav.addEventListener('click', closeMenu);
 const seasons = ['winter', 'spring', 'summer', 'autumn'];
 
 const preloadImages = () => {
-  console.log('preload images');
+  // console.log('preload images');
   for (const season of seasons) {
     for (let i = 1; i <= 6; i++) {
       const img = new Image();
@@ -77,9 +87,12 @@ portfolioBtns.addEventListener('click', changeImages);
 const getTranslate = (lang) => {
   for (const el of document.querySelectorAll('[data-i18]')) {
     el.textContent = i18Obj[lang][el.dataset.i18];
-    el.title = i18Obj[lang][el.dataset.i18];
-    el.alt = i18Obj[lang][el.dataset.i18];
-    el.placeholder = i18Obj[lang][el.dataset.i18];
+    // if (el.alt) el.alt = i18Obj[lang][el.dataset.i18];
+    if (el.title) el.title = i18Obj[lang][el.dataset.i18];
+    if (el.placeholder) {
+      el.placeholder = i18Obj[lang][el.dataset.i18];
+      el.textContent = '';
+    }
   }
 };
 
@@ -124,8 +137,6 @@ const switchTheme = () => {
 };
 
 themeSwitch.addEventListener('click', switchTheme);
-
-// TODO localStorage settings save
 
 function setLocalStorage() {
   const lang = document.querySelector('.lng-active').dataset.lang;
