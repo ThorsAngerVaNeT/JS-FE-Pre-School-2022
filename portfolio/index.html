@@ -62,7 +62,6 @@
           <title data-i18="light-theme">Switch to Light Theme</title>
           <use xlink:href="./assets/svg/sprite.svg#sun" data-icon="sun"></use>
         </svg>
-        <!-- <div class="theme-switch" title="Switch to Light Theme"></div> -->
       </div>
     </header>
     <main>
@@ -83,9 +82,6 @@
           </div>
           <div class="skills-items">
             <div class="skill-item">
-              <!-- <svg class="camera">
-              <use xlink:href="./assets/svg/sprite.svg#camera"></use>
-            </svg> -->
               <p class="skill-item-header" data-i18="skill-title-1">Digital photography</p>
               <p class="skill-item-text" data-i18="skill-text-1">
                 High-quality photos in the studio and on the nature
@@ -149,11 +145,23 @@
             <h2 class="section-title" data-i18="video">Video</h2>
           </div>
           <div class="video-player-wrapper">
-            <video class="video-player">
+            <video class="video-player" src="./assets/video/video.mp4">
               <!-- <video class="video-player" poster="./assets/img/video-player-tablet.jpg"> -->
               <!-- <img src="./assets/img/video-player.jpg" alt="Video player"> -->
             </video>
-            <button class="video-player-btn"></button>
+            <button class="video-player-btn" title="Play"></button>
+            <div class="video-player-controls">
+              <input
+                type="range"
+                name="video-player-timeline"
+                id="video-player-timeline"
+                name="video-player-timeline"
+                style="width: 100%"
+                min="0"
+                max="100"
+                value="0"
+              />
+            </div>
           </div>
         </section>
         <section class="section" id="price">

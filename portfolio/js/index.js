@@ -158,3 +158,19 @@ function getLocalStorage() {
 }
 window.addEventListener('load', getLocalStorage);
 window.addEventListener('load', preloadImages);
+
+const videoPlayer = document.querySelector('.video-player');
+const videoPlayerBtn = document.querySelector('.video-player-btn');
+
+videoPlayerBtn.addEventListener('click', toggleVideo);
+videoPlayer.addEventListener('click', toggleVideo);
+
+function toggleVideo(event) {
+  if (videoPlayer.paused) {
+    videoPlayerBtn.style.display = 'none';
+    videoPlayer.play();
+  } else {
+    videoPlayer.pause();
+    videoPlayerBtn.style.display = 'block';
+  }
+}
