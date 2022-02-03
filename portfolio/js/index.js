@@ -161,16 +161,32 @@ window.addEventListener('load', preloadImages);
 
 const videoPlayer = document.querySelector('.video-player');
 const videoPlayerBtn = document.querySelector('.video-player-btn');
-
-videoPlayerBtn.addEventListener('click', toggleVideo);
-videoPlayer.addEventListener('click', toggleVideo);
+const playToggleBtn = document.querySelector('.play-toggle-btn');
+const videoProgress = document.querySelector('.video-progress');
 
 function toggleVideo(event) {
   if (videoPlayer.paused) {
     videoPlayerBtn.style.display = 'none';
     videoPlayer.play();
+    playToggleBtn.classList.toggle('play');
   } else {
     videoPlayer.pause();
     videoPlayerBtn.style.display = 'block';
+    playToggleBtn.classList.toggle('play');
   }
 }
+
+function handleRangeUpdate() {
+  videoPlayer.currentTime = (videoPlayer.duration * this.value) / 100;
+}
+
+function handleProgress() {
+  const progress = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+  videoProgress.value = progress;
+}
+
+videoPlayerBtn.addEventListener('click', toggleVideo);
+videoPlayer.addEventListener('click', toggleVideo);
+videoPlayer.addEventListener('timeupdate', handleProgress);
+playToggleBtn.addEventListener('click', toggleVideo);
+videoProgress.addEventListener('click', handleRangeUpdate);
