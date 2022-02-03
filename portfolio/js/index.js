@@ -176,8 +176,9 @@ function toggleVideo(event) {
   }
 }
 
-function handleRangeUpdate() {
-  videoPlayer.currentTime = (videoPlayer.duration * this.value) / 100;
+function handleRangeUpdate(e) {
+  videoPlayer.currentTime =
+    (e.offsetX * videoPlayer.duration) / videoProgress.offsetWidth;
 }
 
 function handleProgress() {
@@ -185,8 +186,15 @@ function handleProgress() {
   videoProgress.value = progress;
 }
 
+let mousedown = false;
 videoPlayerBtn.addEventListener('click', toggleVideo);
 videoPlayer.addEventListener('click', toggleVideo);
 videoPlayer.addEventListener('timeupdate', handleProgress);
 playToggleBtn.addEventListener('click', toggleVideo);
 videoProgress.addEventListener('click', handleRangeUpdate);
+videoProgress.addEventListener(
+  'mousemove',
+  (e) => mousedown && handleRangeUpdate
+);
+videoProgress.addEventListener('mousedown', () => (mousedown = true));
+videoProgress.addEventListener('mouseup', () => (mousedown = false));

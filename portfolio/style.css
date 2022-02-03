@@ -1076,27 +1076,31 @@ body.light .nav.open .nav-link:hover {
 .video-player-controls input[type="range"] {
   overflow: hidden;
   width: 100%;
+  height: 15px;
+  margin-top: 12px;
   -webkit-appearance: none;
-  background: transparent;
+  background: var(--color-white);
+  border-radius: 50px;
+  cursor: pointer;
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 10px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 1.3px;
-  border: 0.2px solid rgba(1, 1, 1, 0);
-  cursor: pointer;
+.light .video-player-controls input[type="range"] {
+  background: #b3b3b3;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   height: 15px;
   width: 15px;
-  margin-top: -3.5px;
-  border-radius: 50px;
+  /* margin-top: -3.5px; */
+  /* border: 2px solid var(--color-black); */
+  border-radius: 50%;
   background: var(--color-gold);
-  box-shadow: -1440px 0 0 1424px var(--color-gold);
+  box-shadow: -1440px 0 0 1433px var(--color-gold);
   cursor: ew-resize;
   -webkit-appearance: none;
+}
+
+.light input[type="range"]::-webkit-slider-thumb {
+  background: var(--color-black);
+  box-shadow: -1440px 0 0 1433px var(--color-black);
 }
