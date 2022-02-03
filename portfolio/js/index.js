@@ -189,7 +189,7 @@ function handleProgress() {
 let mousedown = false;
 videoPlayerBtn.addEventListener('click', toggleVideo);
 videoPlayer.addEventListener('click', toggleVideo);
-videoPlayer.addEventListener('timeupdate', handleProgress);
+videoPlayer.addEventListener('timeupdate', () => mousedown && handleProgress);
 playToggleBtn.addEventListener('click', toggleVideo);
 videoProgress.addEventListener('click', handleRangeUpdate);
 videoProgress.addEventListener(
