@@ -1192,16 +1192,16 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .seek-tooltip {
-  margin-left: -20px;
-  padding: 3px;
   display: none;
   position: absolute;
   top: -50px;
+  margin-left: -20px;
   font-size: 12px;
-  font-weight: bold;
+  padding: 3px;
   content: attr(data-title);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: var(--color-white);
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .controls-btns {
@@ -1250,11 +1250,35 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .video-controls svg {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   fill: var(--color-white);
   cursor: pointer;
 }
+
 .video-controls svg:hover {
   fill: var(--color-gold);
+}
+
+.volume-controls {
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volume {
+  width: 100px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.volume-controls:hover .volume,
+.volume-controls .volume:focus {
+  width: 100px;
+  opacity: 1;
+}
+
+.time {
+  font-size: 16px;
 }

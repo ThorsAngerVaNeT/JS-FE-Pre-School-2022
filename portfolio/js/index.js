@@ -164,12 +164,18 @@ const videoControls = document.querySelector('.video-controls');
 const playBtn = document.querySelector('.play');
 const videoPlayerBtn = document.querySelector('.video-player-btn');
 const playbackIcons = document.querySelectorAll('.play-icons use');
-const playToggleBtn = document.querySelector('.play-toggle-btn');
-const videoProgress = document.querySelector('.video-progress');
-const volumeBtn = document.querySelector('.volume-toggle-btn');
-const volumeRange = document.querySelector('.volume');
+const timeElapsed = document.getElementById('time-elapsed');
+const duration = document.getElementById('duration');
+const progressBar = document.querySelector('.progress-bar');
+const seek = document.querySelector('.seek');
+const seekTooltip = document.querySelector('.seek-tooltip');
+
+const volumeBtn = document.querySelector('.volume-btn');
+const volumeIcons = document.querySelectorAll('.volume-btn use');
+const volume = document.querySelector('.volume');
 
 function togglePlay() {
+  video.volume = volume.value;
   if (video.paused || video.ended) {
     video.play();
   } else {
@@ -188,6 +194,98 @@ function updatePlayButton() {
   }
 }
 
+function formatTime(timeInSeconds) {
+  const result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
+
+  return {
+    minutes: result.substr(3, 2),
+    seconds: result.substr(6, 2),
+  };
+}
+
+function initializeVideo() {
+  const videoDuration = Math.round(video.duration);
+  const time = formatTime(videoDuration);
+  seek.setAttribute('max', videoDuration);
+  progressBar.setAttribute('max', videoDuration);
+  duration.innerText = `${time.minutes}:${time.seconds}`;
+  duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+}
+
+function updateTimeElapsed() {
+  const time = formatTime(Math.round(video.currentTime));
+  timeElapsed.innerText = `${time.minutes}:${time.seconds}`;
+  timeElapsed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+}
+
+function updateProgress() {
+  seek.value = Math.floor(video.currentTime);
+  progressBar.value = Math.floor(video.currentTime);
+}
+
+function updateSeekTooltip(event) {
+  const rect = video.getBoundingClientRect();
+  const skipTo = Math.round(
+    (event.offsetX / event.target.clientWidth) *
+      parseInt(event.target.getAttribute('max'), 10)
+  );
+  const t = formatTime(skipTo);
+  seek.setAttribute('data-seek', skipTo);
+  seekTooltip.textContent = `${t.minutes}:${t.seconds}`;
+  seekTooltip.style.left = `${event.pageX - rect.left}px`;
+}
+
+function skipAhead(event) {
+  const skipTo = event.target.dataset.seek
+    ? event.target.dataset.seek
+    : event.target.value;
+  video.currentTime = skipTo;
+  progressBar.value = skipTo;
+  seek.value = skipTo;
+}
+
+function updateVolume() {
+  if (video.muted) {
+    video.muted = false;
+  }
+  console.log(video.volume);
+  video.volume = volume.value;
+}
+
+function updateVolumeBtn() {
+  volumeIcons.forEach((icon) => icon.classList.add('hidden'));
+  volumeBtn.setAttribute('data-title', 'Mute (m)');
+  if (video.muted || video.volume === 0) {
+    volumeIcons[1].classList.remove('hidden');
+    volumeBtn.setAttribute('data-title', 'Unmute (m)');
+  } else {
+    volumeIcons[0].classList.remove('hidden');
+  }
+}
+
+function toggleMute() {
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    volume.setAttribute('data-volume', volume.value);
+    volume.value = 0;
+  } else {
+    volume.value = volume.dataset.volume;
+  }
+}
+
 video.addEventListener('click', togglePlay);
 playBtn.addEventListener('click', togglePlay);
 videoPlayerBtn.addEventListener('click', togglePlay);
+
+video.addEventListener('loadedmetadata', initializeVideo);
+video.addEventListener('timeupdate', updateTimeElapsed);
+video.addEventListener('timeupdate', updateProgress);
+
+seek.addEventListener('mousemove', updateSeekTooltip);
+seek.addEventListener('input', skipAhead);
+
+volume.addEventListener('input', updateVolume);
+video.addEventListener('volumechange', updateVolumeBtn);
+
+volumeBtn.addEventListener('click', toggleMute);

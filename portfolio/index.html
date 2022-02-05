@@ -165,6 +165,33 @@
                       <use class="hidden" xlink:href="./assets/svg/sprite.svg#pause"></use>
                     </svg>
                   </button>
+
+                  <div class="volume-controls">
+                    <button data-title="Mute (m)" class="volume-btn">
+                      <svg>
+                        <use xlink:href="./assets/svg/sprite.svg#volume"></use>
+                        <use class="hidden" xlink:href="./assets/svg/sprite.svg#mute"></use>
+                      </svg>
+                    </button>
+
+                    <input
+                      class="volume"
+                      type="range"
+                      name="volume"
+                      id="volume"
+                      data-mute="0.3"
+                      value="0.3"
+                      max="1"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+
+                  <div class="time">
+                    <time id="time-elapsed">00:00</time>
+                    <span> / </span>
+                    <time id="duration">00:00</time>
+                  </div>
                 </div>
                 <div class="right-controls"></div>
               </div>
