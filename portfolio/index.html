@@ -62,7 +62,6 @@
           <title data-i18="light-theme">Switch to Light Theme</title>
           <use xlink:href="./assets/svg/sprite.svg#sun" data-icon="sun"></use>
         </svg>
-        <!-- <div class="theme-switch" title="Switch to Light Theme"></div> -->
       </div>
     </header>
     <main>
@@ -83,9 +82,6 @@
           </div>
           <div class="skills-items">
             <div class="skill-item">
-              <!-- <svg class="camera">
-              <use xlink:href="./assets/svg/sprite.svg#camera"></use>
-            </svg> -->
               <p class="skill-item-header" data-i18="skill-title-1">Digital photography</p>
               <p class="skill-item-text" data-i18="skill-text-1">
                 High-quality photos in the studio and on the nature
@@ -149,11 +145,68 @@
             <h2 class="section-title" data-i18="video">Video</h2>
           </div>
           <div class="video-player-wrapper">
-            <video class="video-player">
-              <!-- <video class="video-player" poster="./assets/img/video-player-tablet.jpg"> -->
-              <!-- <img src="./assets/img/video-player.jpg" alt="Video player"> -->
-            </video>
-            <button class="video-player-btn"></button>
+            <video class="video-player" src="./assets/video/video.mp4"></video>
+            <button class="video-player-btn" title="Play"></button>
+
+            <div class="video-controls hide" id="video-controls">
+              <div class="video-progress">
+                <progress class="progress-bar" value="0" min="0"></progress>
+                <input class="seek" type="range" value="0" min="0" step="1" />
+                <div class="seek-tooltip">00:00</div>
+              </div>
+              <div class="controls-btns">
+                <div class="left-controls">
+                  <button data-title="Play (k)" class="play">
+                    <svg class="play-icons">
+                      <use xlink:href="./assets/svg/sprite.svg#play"></use>
+                      <use class="hidden" xlink:href="./assets/svg/sprite.svg#pause"></use>
+                    </svg>
+                  </button>
+
+                  <div class="volume-controls">
+                    <button data-title="Mute (m)" class="volume-btn">
+                      <svg>
+                        <use xlink:href="./assets/svg/sprite.svg#volume"></use>
+                        <use class="hidden" xlink:href="./assets/svg/sprite.svg#mute"></use>
+                      </svg>
+                    </button>
+
+                    <input
+                      class="volume"
+                      type="range"
+                      name="volume"
+                      data-mute="0.3"
+                      value="0.3"
+                      max="1"
+                      min="0"
+                      step="0.01"
+                    />
+                  </div>
+
+                  <div class="time">
+                    <time id="time-elapsed">00:00</time>
+                    <span> / </span>
+                    <time id="duration">00:00</time>
+                  </div>
+                </div>
+                <div class="right-controls">
+                  <button data-title="PIP (p)" class="pip-btn">
+                    <svg>
+                      <use xlink:href="./assets/svg/sprite.svg#pip"></use>
+                    </svg>
+                  </button>
+                  <button data-title="Full screen (f)" class="fullscreen-btn">
+                    <svg>
+                      <use xlink:href="./assets/svg/sprite.svg#fullscreen"></use>
+                      <use
+                        class="hidden"
+                        xlink:href="./assets/svg/sprite.svg#fullscreen-exit"
+                      ></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         <section class="section" id="price">

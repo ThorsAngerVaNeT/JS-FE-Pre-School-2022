@@ -390,9 +390,9 @@ body {
 
 .video-player {
   width: 100%;
-  height: 0;
-  padding-top: 50.36%;
-  background-image: url("./assets/img/video-player.jpg");
+  height: 100%;
+  /* padding-top: 50.36%; */
+  /* background-image: url("./assets/img/video-player.jpg"); */
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -884,9 +884,9 @@ textarea.contacts-input {
 
   .video-player {
     width: 100%;
-    height: 0;
-    padding-top: 54.43%;
-    background-image: url("./assets/img/video-player-tablet.jpg");
+    height: 100%;
+    /* padding-top: 54.43%; */
+    /* background-image: url("./assets/img/video-player-tablet.jpg"); */
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -1049,4 +1049,287 @@ body.light .nav.open .nav-link:hover {
     right: 20px;
     top: 20px;
   }
+}
+
+/* .video-player-controls {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.play-toggle-btn {
+  width: 40px;
+  height: 40px;
+  background-image: url("./assets/svg/play.svg");
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.play-toggle-btn.play {
+  background-image: url("./assets/svg/pause.svg");
+}
+
+.play-toggle-btn:active,
+.play-toggle-btn:hover {
+  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+.volume-toggle-btn {
+  width: 50px;
+  height: 40px;
+  background-image: url("./assets/svg/volume.svg");
+  background-size: 36px 36px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.volume-toggle-btn.mute {
+  background-image: url("./assets/svg/mute.svg");
+}
+
+.video-progress {
+  width: 100%;
+}
+
+.video-player-controls input[type="range"] {
+  overflow: hidden;
+  height: 15px;
+  margin-top: 12px;
+  -webkit-appearance: none;
+  background: var(--color-white);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.light .video-player-controls input[type="range"] {
+  background: #b3b3b3;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  /* margin-top: -3.5px; */
+/* border: 2px solid var(--color-black); 
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: -1440px 0 0 1433px var(--color-gold);
+  cursor: ew-resize;
+  -webkit-appearance: none;
+}
+
+.light input[type="range"]::-webkit-slider-thumb {
+  background: var(--color-black);
+  box-shadow: -1440px 0 0 1433px var(--color-black);
+}
+
+.volume-range {
+  width: 20%;
+}
+*/
+
+.hidden {
+  display: none;
+}
+
+.video-controls {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  transition: all 0.3s ease;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+}
+
+.video-controls.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.video-progress {
+  position: relative;
+  height: 8.4px;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8.4px;
+  border-radius: 2px;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background-color: var(--color-white);
+  border-radius: 2px;
+}
+
+.progress-bar::-webkit-progress-value {
+  background-color: var(--color-gold);
+  border-radius: 2px;
+}
+
+.seek {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 0;
+}
+
+.seek:hover + .seek-tooltip {
+  display: block;
+}
+
+.seek-tooltip {
+  display: none;
+  position: absolute;
+  top: -50px;
+  margin-left: -20px;
+  font-size: 12px;
+  padding: 3px;
+  content: attr(data-title);
+  font-weight: bold;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.controls-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-white);
+}
+
+.controls-btns button {
+  margin-right: 7px;
+  padding: 3px;
+  position: relative;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.controls-btns button::before {
+  padding: 4px 6px;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: -50px;
+  content: attr(data-title);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--color-white);
+  font-weight: bold;
+  word-break: keep-all;
+  white-space: pre;
+}
+
+.controls-btns button:hover::before {
+  display: inline-block;
+}
+
+.play-icon {
+  fill: var(--color-gold);
+}
+
+.video-controls svg {
+  width: 36px;
+  height: 36px;
+  fill: var(--color-white);
+  cursor: pointer;
+}
+
+.video-controls svg:hover {
+  fill: var(--color-gold);
+}
+
+.volume-controls {
+  margin-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volume {
+  width: 100px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.volume-controls:hover .volume,
+.volume-controls .volume:focus {
+  width: 100px;
+  opacity: 1;
+}
+
+.time {
+  font-size: 16px;
+}
+
+.video-player:hover .video-controls {
+  opacity: 1;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 8.4px;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 1.3px;
+  -webkit-appearance: none;
+  transition: all 0.4s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  background: var(--color-white);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-left: -1px;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+input[type="range"].volume {
+  overflow: hidden;
+  height: 5px;
+  background-color: var(--color-white);
+}
+
+input[type="range"].volume::-webkit-slider-runnable-track {
+  background-color: transparent;
+}
+
+input[type="range"].volume::-webkit-slider-thumb {
+  margin-left: 0;
+  height: 1px;
+  width: 1px;
+  background: var(--color-white);
+  box-shadow: -140px 0 0 140px var(--color-gold);
 }

@@ -1,16 +1,19 @@
 import i18Obj from './translate.js';
 
 console.log(
-  'Portfolio#3. Самооценка 85/85 баллов:\n' +
-    '%c\t\u2713 %cСмена изображений в секции portfolio +25\n' +
-    '%c\t\u2713 %cПеревод страницы на два языка +25\n' +
-    '%c\t\u2713 %cПереключение светлой и тёмной темы +25\n' +
-    '%c\t\u2713 %cДополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема сохраняются при перезагрузке страницы +5\n' +
-    '%c\t\u2713 %cДополнительный функционал: сложные эффекты для кнопок при наведении и/или клике +5:\n' +
-    '\t\t1) при наведении на иконку смены темы;\n' +
-    '\t\t2) при длительном клике на золотые кнопки;\n' +
-    '\t\t3) переключение сезона в разделе Portfolio;\n' +
-    '\t\t4) при наведении на иконки соцсетей.',
+  'js30#1.3-custom-video. Самооценка 70/70 баллов:\n' +
+    '%c\t\u2713 %cВёрстка +10\n' +
+    '%c\t\u2713 %cКнопка Play/Pause на панели управления +10\n' +
+    '%c\t\u2713 %cПрогресс-бар отображает прогресс проигрывания видео. При перемещении ползунка прогресс-бара вручную меняется текущее время проигрывания видео. Разный цвет прогресс-бара до и после ползунка +10\n' +
+    '%c\t\u2713 %cПри перемещении ползунка регулятора громкости звука можно сделать звук громче или тише. Разный цвет регулятора громкости звука до и после ползунка +10\n' +
+    '%c\t\u2713 %cПри клике по кнопке Volume/Mute можно включить или отключить звук. Одновременно с включением/выключением звука меняется внешний вид кнопки. Также внешний вид кнопки меняется, если звук включают или выключают перетягиванием регулятора громкости звука от нуля или до нуля +10\n' +
+    '%c\t\u2713 %cКнопка Play/Pause в центре видео +10\n' +
+    '%c\t\u2713 %cОчень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10:\n' +
+    '\t\tдобавлен функционал просмотра в режимах "картинка-в-картинке", "полноэкранный режим", а также горячие клавиши (k - Play/Pause, m - Mute/unmute, f - переключение полноэкранного режима, p - переключение режима картинка-в-картинке).',
+  'color: green',
+  '',
+  'color: green',
+  '',
   'color: green',
   '',
   'color: green',
@@ -158,3 +161,227 @@ function getLocalStorage() {
 }
 window.addEventListener('load', getLocalStorage);
 window.addEventListener('load', preloadImages);
+
+const video = document.querySelector('.video-player');
+const videoControls = document.querySelector('.video-controls');
+const playBtn = document.querySelector('.play');
+const videoPlayerBtn = document.querySelector('.video-player-btn');
+const playbackIcons = document.querySelectorAll('.play-icons use');
+const timeElapsed = document.getElementById('time-elapsed');
+const duration = document.getElementById('duration');
+const progressBar = document.querySelector('.progress-bar');
+const seek = document.querySelector('.seek');
+const seekTooltip = document.querySelector('.seek-tooltip');
+
+const volumeBtn = document.querySelector('.volume-btn');
+const volumeIcons = document.querySelectorAll('.volume-btn use');
+const volume = document.querySelector('.volume');
+
+const fullscreenBtn = document.querySelector('.fullscreen-btn');
+const fullscreenIcons = fullscreenBtn.querySelectorAll('use');
+const videoContainer = document.querySelector('.video-player-wrapper');
+const pipBtn = document.querySelector('.pip-btn');
+
+video.volume = 0.3;
+
+function togglePlay() {
+  if (video.paused || video.ended) {
+    video.play();
+  } else {
+    video.pause();
+  }
+  updatePlayButton();
+}
+
+function updatePlayButton() {
+  playbackIcons.forEach((icon) => icon.classList.toggle('hidden'));
+  videoPlayerBtn.classList.toggle('hidden');
+  if (video.paused) {
+    playBtn.setAttribute('data-title', 'Play (k)');
+  } else {
+    playBtn.setAttribute('data-title', 'Pause (k)');
+  }
+}
+
+function formatTime(timeInSeconds) {
+  const result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
+
+  return {
+    minutes: result.substr(3, 2),
+    seconds: result.substr(6, 2),
+  };
+}
+
+function initializeVideo() {
+  const videoDuration = Math.round(video.duration);
+  const time = formatTime(videoDuration);
+  seek.setAttribute('max', videoDuration);
+  progressBar.setAttribute('max', videoDuration);
+  duration.innerText = `${time.minutes}:${time.seconds}`;
+  duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+}
+
+function updateTimeElapsed() {
+  const time = formatTime(Math.round(video.currentTime));
+  timeElapsed.innerText = `${time.minutes}:${time.seconds}`;
+  timeElapsed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`);
+}
+
+function updateProgress() {
+  seek.value = Math.floor(video.currentTime);
+  progressBar.value = Math.floor(video.currentTime);
+}
+
+function updateSeekTooltip(event) {
+  const rect = video.getBoundingClientRect();
+  const skipTo = Math.round(
+    (event.offsetX / event.target.clientWidth) *
+      parseInt(event.target.getAttribute('max'), 10)
+  );
+  const t = formatTime(skipTo);
+  seek.setAttribute('data-seek', skipTo);
+  seekTooltip.textContent = `${t.minutes}:${t.seconds}`;
+  seekTooltip.style.left = `${event.pageX - rect.left}px`;
+}
+
+function skipAhead(event) {
+  const skipTo = event.target.dataset.seek
+    ? event.target.dataset.seek
+    : event.target.value;
+  video.currentTime = skipTo;
+  progressBar.value = skipTo;
+  seek.value = skipTo;
+}
+
+function updateVolume() {
+  if (video.muted) {
+    video.muted = false;
+  }
+
+  video.volume = volume.value;
+}
+
+function updateVolumeBtn() {
+  volumeIcons.forEach((icon) => icon.classList.add('hidden'));
+  volumeBtn.setAttribute('data-title', 'Mute (m)');
+  if (video.muted || video.volume === 0 || volume.value === 0) {
+    volumeIcons[1].classList.remove('hidden');
+    volumeBtn.setAttribute('data-title', 'Unmute (m)');
+  } else {
+    volumeIcons[0].classList.remove('hidden');
+  }
+}
+
+function toggleMute() {
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    volume.setAttribute('data-volume', volume.value);
+    volume.value = 0;
+  } else {
+    volume.value = volume.dataset.volume;
+  }
+}
+
+function hideControls() {
+  videoControls.classList.add('hide');
+}
+
+function showControls() {
+  videoControls.classList.remove('hide');
+}
+
+function toggleFullScreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else if (document.webkitFullscreenElement) {
+    document.webkitExitFullscreen();
+  } else if (videoContainer.webkitRequestFullscreen) {
+    videoContainer.webkitRequestFullscreen();
+  } else {
+    videoContainer.requestFullscreen();
+  }
+  updateFullscreenBtn();
+}
+
+function updateFullscreenBtn() {
+  fullscreenIcons.forEach((icon) => icon.classList.toggle('hidden'));
+
+  if (document.fullscreenElement) {
+    fullscreenBtn.setAttribute('data-title', 'Exit full screen (f)');
+  } else {
+    fullscreenBtn.setAttribute('data-title', 'Full screen (f)');
+  }
+}
+
+async function togglePip() {
+  try {
+    if (video !== document.pictureInPictureElement) {
+      pipBtn.disabled = true;
+      await video.requestPictureInPicture();
+    } else {
+      await document.exitPictureInPicture();
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    pipBtn.disabled = false;
+  }
+}
+
+function keyboardShortcuts(event) {
+  const { key } = event;
+  switch (key) {
+    case 'k':
+      togglePlay();
+      if (video.paused) {
+        showControls();
+      } else {
+        setTimeout(() => {
+          hideControls();
+        }, 2000);
+      }
+      break;
+    case 'm':
+      toggleMute();
+      break;
+    case 'f':
+      toggleFullScreen();
+      break;
+    case 'p':
+      togglePip();
+      break;
+  }
+}
+
+video.addEventListener('click', togglePlay);
+playBtn.addEventListener('click', togglePlay);
+videoPlayerBtn.addEventListener('click', togglePlay);
+
+video.addEventListener('loadedmetadata', initializeVideo);
+video.addEventListener('timeupdate', updateTimeElapsed);
+video.addEventListener('timeupdate', updateProgress);
+
+seek.addEventListener('mousemove', updateSeekTooltip);
+seek.addEventListener('input', skipAhead);
+
+volume.addEventListener('input', updateVolume);
+video.addEventListener('volumechange', updateVolumeBtn);
+
+volumeBtn.addEventListener('click', toggleMute);
+
+video.addEventListener('mouseenter', showControls);
+video.addEventListener('mouseleave', hideControls);
+videoControls.addEventListener('mouseenter', showControls);
+videoControls.addEventListener('mouseleave', hideControls);
+
+fullscreenBtn.addEventListener('click', toggleFullScreen);
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!('pictureInPictureEnabled' in document)) {
+    pipBtn.classList.add('hidden');
+  }
+});
+
+pipBtn.addEventListener('click', togglePip);
+document.addEventListener('keyup', keyboardShortcuts);
