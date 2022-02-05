@@ -159,61 +159,35 @@ function getLocalStorage() {
 window.addEventListener('load', getLocalStorage);
 window.addEventListener('load', preloadImages);
 
-const videoPlayer = document.querySelector('.video-player');
+const video = document.querySelector('.video-player');
+const videoControls = document.querySelector('.video-controls');
+const playBtn = document.querySelector('.play');
 const videoPlayerBtn = document.querySelector('.video-player-btn');
+const playbackIcons = document.querySelectorAll('.play-icons use');
 const playToggleBtn = document.querySelector('.play-toggle-btn');
 const videoProgress = document.querySelector('.video-progress');
 const volumeBtn = document.querySelector('.volume-toggle-btn');
 const volumeRange = document.querySelector('.volume');
 
-function toggleVideo(event) {
-  if (videoPlayer.paused) {
-    videoPlayerBtn.style.display = 'none';
-    videoPlayer.volume = volumeRange.value;
-    videoPlayer.play();
-    playToggleBtn.classList.toggle('play');
+function togglePlay() {
+  if (video.paused || video.ended) {
+    video.play();
   } else {
-    videoPlayer.pause();
-    videoPlayerBtn.style.display = 'block';
-    playToggleBtn.classList.toggle('play');
+    video.pause();
+  }
+  updatePlayButton();
+}
+
+function updatePlayButton() {
+  playbackIcons.forEach((icon) => icon.classList.toggle('hidden'));
+  videoPlayerBtn.classList.toggle('hidden');
+  if (video.paused) {
+    playBtn.setAttribute('data-title', 'Play (k)');
+  } else {
+    playBtn.setAttribute('data-title', 'Pause (k)');
   }
 }
 
-function handleProgressUpdate(e) {
-  videoPlayer.currentTime =
-    (e.offsetX * videoPlayer.duration) / videoProgress.offsetWidth;
-  handleProgress();
-}
-
-function handleProgress() {
-  const progress = (videoPlayer.currentTime / videoPlayer.duration) * 100;
-  videoProgress.value = progress;
-}
-
-function toggleSound() {
-  if (videoPlayer.volume) {
-    videoPlayer.volume = 0;
-    volumeBtn.classList.toggle('mute');
-  } else {
-    videoPlayer.volume = volumeRange.value;
-    volumeBtn.classList.toggle('mute');
-  }
-}
-
-function handleVolumeUpdate() {
-  if (volumeBtn.classList.contains('mute')) volumeBtn.classList.toggle('mute');
-  videoPlayer.volume = this.value;
-}
-
-let mousedown = false;
-videoPlayerBtn.addEventListener('click', toggleVideo);
-videoPlayer.addEventListener('click', toggleVideo);
-videoPlayer.addEventListener('timeupdate', handleProgress);
-playToggleBtn.addEventListener('click', toggleVideo);
-videoProgress.addEventListener('click', handleProgressUpdate);
-videoProgress.addEventListener('mousemove', (e) => mousedown && handleProgress);
-videoProgress.addEventListener('mousedown', () => (mousedown = true));
-videoProgress.addEventListener('mouseup', () => (mousedown = false));
-
-volumeBtn.addEventListener('click', toggleSound);
-volumeRange.addEventListener('change', handleVolumeUpdate);
+video.addEventListener('click', togglePlay);
+playBtn.addEventListener('click', togglePlay);
+videoPlayerBtn.addEventListener('click', togglePlay);

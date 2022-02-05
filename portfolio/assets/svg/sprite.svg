@@ -82,15 +82,8 @@
     <path d="M15.047 34.594v-33.194c0-0.618-0.498-1.116-1.126-1.116h-6.607c-0.628 0-1.126 0.498-1.126 1.116v33.194c0 0.618 0.498 1.126 1.126 1.126h6.607c0.628 0 1.126-0.498 1.126-1.126z"></path>
     <path d="M28.687 0.281h-6.607c-0.618 0-1.126 0.498-1.126 1.116v33.194c0 0.618 0.498 1.126 1.126 1.126h6.607c0.618 0 1.126-0.498 1.126-1.126v-33.194c0-0.618-0.498-1.116-1.126-1.116z"></path>
   </symbol>
-  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 30" id="play">
-    <g clip-path="url(#clip0)">
-      <path d="M22.35 14.75L0 0C0 22.23 0 11.32 0 29.49L22.35 14.75Z" fill="#B3B3B3"></path>
-    </g>
-    <defs>
-      <clipPath id="clip0">
-        <rect width="22.35" height="29.49" fill="white"></rect>
-      </clipPath>
-    </defs>
+  <symbol version="1.1" xmlns="http://www.w3.org/2000/svg"  id="play" viewBox="0 0 24 24">
+    <path d="M8.016 5.016l10.969 6.984-10.969 6.984v-13.969z"></path>
   </symbol>
   <symbol version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" id="volume">
     <title>volume</title>
