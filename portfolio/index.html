@@ -145,7 +145,9 @@
             <h2 class="section-title" data-i18="video">Video</h2>
           </div>
           <div class="video-player-wrapper">
-            <video class="video-player" src="./assets/video/video.mp4"></video>
+            <video class="video-player" preload="metadata">
+              <source src="./assets/video/video.mp4" type="video/mp4"></source>
+            </video>
             <button class="video-player-btn" title="Play"></button>
 
             <div class="video-controls hide" id="video-controls">
