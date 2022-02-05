@@ -274,6 +274,14 @@ function toggleMute() {
   }
 }
 
+function hideControls() {
+  videoControls.classList.add('hide');
+}
+
+function showControls() {
+  videoControls.classList.remove('hide');
+}
+
 video.addEventListener('click', togglePlay);
 playBtn.addEventListener('click', togglePlay);
 videoPlayerBtn.addEventListener('click', togglePlay);
@@ -289,3 +297,8 @@ volume.addEventListener('input', updateVolume);
 video.addEventListener('volumechange', updateVolumeBtn);
 
 volumeBtn.addEventListener('click', toggleMute);
+
+video.addEventListener('mouseenter', showControls);
+video.addEventListener('mouseleave', hideControls);
+videoControls.addEventListener('mouseenter', showControls);
+videoControls.addEventListener('mouseleave', hideControls);
