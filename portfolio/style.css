@@ -1331,5 +1331,5 @@ input[type="range"].volume::-webkit-slider-thumb {
   height: 5px;
   width: 5px;
   background: var(--color-white);
-  box-shadow: -140px 0 0 130px var(--color-gold);
+  box-shadow: -140px 0 0 137.5px var(--color-gold);
 }

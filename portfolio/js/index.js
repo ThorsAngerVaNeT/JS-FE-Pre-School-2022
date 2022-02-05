@@ -174,8 +174,14 @@ const volumeBtn = document.querySelector('.volume-btn');
 const volumeIcons = document.querySelectorAll('.volume-btn use');
 const volume = document.querySelector('.volume');
 
+const fullscreenBtn = document.querySelector('.fullscreen-btn');
+const fullscreenIcons = fullscreenBtn.querySelectorAll('use');
+const videoContainer = document.querySelector('.video-player-wrapper');
+const pipBtn = document.querySelector('.pip-btn');
+
+video.volume = 0.3;
+
 function togglePlay() {
-  video.volume = volume.value;
   if (video.paused || video.ended) {
     video.play();
   } else {
@@ -248,14 +254,14 @@ function updateVolume() {
   if (video.muted) {
     video.muted = false;
   }
-  console.log(video.volume);
+
   video.volume = volume.value;
 }
 
 function updateVolumeBtn() {
   volumeIcons.forEach((icon) => icon.classList.add('hidden'));
   volumeBtn.setAttribute('data-title', 'Mute (m)');
-  if (video.muted || video.volume === 0) {
+  if (video.muted || video.volume === 0 || volume.value === 0) {
     volumeIcons[1].classList.remove('hidden');
     volumeBtn.setAttribute('data-title', 'Unmute (m)');
   } else {
@@ -282,6 +288,69 @@ function showControls() {
   videoControls.classList.remove('hide');
 }
 
+function toggleFullScreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else if (document.webkitFullscreenElement) {
+    document.webkitExitFullscreen();
+  } else if (videoContainer.webkitRequestFullscreen) {
+    videoContainer.webkitRequestFullscreen();
+  } else {
+    videoContainer.requestFullscreen();
+  }
+  updateFullscreenBtn();
+}
+
+function updateFullscreenBtn() {
+  fullscreenIcons.forEach((icon) => icon.classList.toggle('hidden'));
+
+  if (document.fullscreenElement) {
+    fullscreenBtn.setAttribute('data-title', 'Exit full screen (f)');
+  } else {
+    fullscreenBtn.setAttribute('data-title', 'Full screen (f)');
+  }
+}
+
+async function togglePip() {
+  try {
+    if (video !== document.pictureInPictureElement) {
+      pipBtn.disabled = true;
+      await video.requestPictureInPicture();
+    } else {
+      await document.exitPictureInPicture();
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    pipBtn.disabled = false;
+  }
+}
+
+function keyboardShortcuts(event) {
+  const { key } = event;
+  switch (key) {
+    case 'k':
+      togglePlay();
+      if (video.paused) {
+        showControls();
+      } else {
+        setTimeout(() => {
+          hideControls();
+        }, 2000);
+      }
+      break;
+    case 'm':
+      toggleMute();
+      break;
+    case 'f':
+      toggleFullScreen();
+      break;
+    case 'p':
+      togglePip();
+      break;
+  }
+}
+
 video.addEventListener('click', togglePlay);
 playBtn.addEventListener('click', togglePlay);
 videoPlayerBtn.addEventListener('click', togglePlay);
@@ -302,3 +371,14 @@ video.addEventListener('mouseenter', showControls);
 video.addEventListener('mouseleave', hideControls);
 videoControls.addEventListener('mouseenter', showControls);
 videoControls.addEventListener('mouseleave', hideControls);
+
+fullscreenBtn.addEventListener('click', toggleFullScreen);
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!('pictureInPictureEnabled' in document)) {
+    pipBtn.classList.add('hidden');
+  }
+});
+
+pipBtn.addEventListener('click', togglePip);
+document.addEventListener('keyup', keyboardShortcuts);
