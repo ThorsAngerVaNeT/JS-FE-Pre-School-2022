@@ -1328,8 +1328,8 @@ input[type="range"].volume::-webkit-slider-runnable-track {
 
 input[type="range"].volume::-webkit-slider-thumb {
   margin-left: 0;
-  height: 5px;
-  width: 5px;
+  height: 1px;
+  width: 1px;
   background: var(--color-white);
-  box-shadow: -140px 0 0 137.5px var(--color-gold);
+  box-shadow: -140px 0 0 140px var(--color-gold);
 }
