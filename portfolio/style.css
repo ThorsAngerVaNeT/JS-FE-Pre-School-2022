@@ -1051,85 +1051,6 @@ body.light .nav.open .nav-link:hover {
   }
 }
 
-/* .video-player-controls {
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-}
-
-.play-toggle-btn {
-  width: 40px;
-  height: 40px;
-  background-image: url("./assets/svg/play.svg");
-  background-size: 40px 40px;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.play-toggle-btn.play {
-  background-image: url("./assets/svg/pause.svg");
-}
-
-.play-toggle-btn:active,
-.play-toggle-btn:hover {
-  filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
-}
-
-.volume-toggle-btn {
-  width: 50px;
-  height: 40px;
-  background-image: url("./assets/svg/volume.svg");
-  background-size: 36px 36px;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.volume-toggle-btn.mute {
-  background-image: url("./assets/svg/mute.svg");
-}
-
-.video-progress {
-  width: 100%;
-}
-
-.video-player-controls input[type="range"] {
-  overflow: hidden;
-  height: 15px;
-  margin-top: 12px;
-  -webkit-appearance: none;
-  background: var(--color-white);
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.light .video-player-controls input[type="range"] {
-  background: #b3b3b3;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  height: 15px;
-  width: 15px;
-  /* margin-top: -3.5px; */
-/* border: 2px solid var(--color-black); 
-  border-radius: 50%;
-  background: var(--color-gold);
-  box-shadow: -1440px 0 0 1433px var(--color-gold);
-  cursor: ew-resize;
-  -webkit-appearance: none;
-}
-
-.light input[type="range"]::-webkit-slider-thumb {
-  background: var(--color-black);
-  box-shadow: -1440px 0 0 1433px var(--color-black);
-}
-
-.volume-range {
-  width: 20%;
-}
-*/
-
 .hidden {
   display: none;
 }
@@ -1139,6 +1060,7 @@ input[type="range"]::-webkit-slider-thumb {
   bottom: 0;
   left: 0;
   padding: 10px;
+  margin-bottom: 10px;
   position: absolute;
   transition: all 0.3s ease;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
