@@ -214,6 +214,7 @@ function formatTime(timeInSeconds) {
 
 function initializeVideo() {
   const videoDuration = Math.round(video.duration);
+  // console.log(video.duration);
   const time = formatTime(videoDuration);
   seek.setAttribute('max', videoDuration);
   progressBar.setAttribute('max', videoDuration);
@@ -354,10 +355,15 @@ function keyboardShortcuts(event) {
   }
 }
 
+// if (video.readyState >= 2) {
+//   initializeVideo();
+// }
+
 video.addEventListener('click', togglePlay);
 playBtn.addEventListener('click', togglePlay);
 videoPlayerBtn.addEventListener('click', togglePlay);
 
+video.addEventListener('loadeddata', initializeVideo);
 video.addEventListener('loadedmetadata', initializeVideo);
 video.addEventListener('timeupdate', updateTimeElapsed);
 video.addEventListener('timeupdate', updateProgress);

@@ -1079,6 +1079,8 @@ body.light .nav.open .nav-link:hover {
 
 .progress-bar {
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 100%;
   height: 8.4px;
   border-radius: 2px;
@@ -1095,6 +1097,11 @@ body.light .nav.open .nav-link:hover {
 .progress-bar::-webkit-progress-value {
   background-color: var(--color-gold);
   border-radius: 2px;
+}
+
+.progress-bar::-moz-progress-bar {
+  border: 1px solid var(--color-gold);
+  background: var(--color-gold);
 }
 
 .seek {
@@ -1199,6 +1206,11 @@ body.light .nav.open .nav-link:hover {
 
 .time {
   font-size: 16px;
+  line-height: 24px;
+}
+
+.right-controls {
+  line-height: 24px;
 }
 
 .video-player:hover .video-controls {
@@ -1253,6 +1265,37 @@ input[type="range"].volume::-webkit-slider-thumb {
   margin-left: 0;
   height: 1px;
   width: 1px;
+  background: var(--color-white);
+  box-shadow: -140px 0 0 140px var(--color-gold);
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 1.3px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 50px;
+  border: 1px solid var(--color-white);
+  background: var(--color-white);
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+input[type="range"]:focus::-moz-range-track {
+  outline: none;
+}
+
+input[type="range"].volume::-moz-range-thumb {
+  height: 1px;
+  width: 1px;
+  border: 1px solid var(--color-white);
   background: var(--color-white);
   box-shadow: -140px 0 0 140px var(--color-gold);
 }
