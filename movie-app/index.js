@@ -1,21 +1,23 @@
 import { API_CONF, API_URL, SEARCH_URL } from './js/api-config.js';
-import data from './movies.js';
+import data from './js/movies.js';
 
 const searchForm = document.getElementById('search-form');
 const search = document.getElementById('search');
 const main = document.querySelector('.main');
 
-function fetchAPI() {
-  fetch(`${API_URL}`)
-    .then(res => res.json())
-    .then(json => insertMovieDivs(json))
-    .catch(err => console.log(err));
+async function fetchAPI() {
+  try {
+    const response = await fetch(`${API_URL}`);
+    const json = await response.json();
+    insertMovieDivs(json);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-fetchAPI();
 function insertMovieDivs(json) {
   main.innerHTML = '';
-  if (json.results.length === 0) main.innerHTML = 'Nothing Found!';
+  if (json?.results.length === 0) main.innerHTML = 'Nothing Found!';
   else
     json.results.forEach(movie => {
       const divMovie = `<div class="movie-card">
@@ -26,27 +28,37 @@ function insertMovieDivs(json) {
             </div>
             <div class="info-score">
               <i class="fa-solid fa-star"></i>
-              <span>${movie.vote_average}</span>
+              <span title="${movie.vote_count} votes">${movie.vote_average}</span>
             </div>
           </div>
+          <div class="desc-text"><h3>Overview</h3>${movie.overview}</div>
         </div>`;
-
-      let divOverview = document.create;
-
-      // TODO add desc
       main.insertAdjacentHTML('beforeend', divMovie);
     });
 }
 
-function searchAPI(e) {
+async function searchAPI(e) {
   e.preventDefault();
 
   if (search.value !== '') {
-    fetch(`${SEARCH_URL}${search.value}`)
-      .then(res => res.json())
-      .then(json => insertMovieDivs(json))
-      .catch(err => console.log(err));
+    try {
+      const response = await fetch(`${SEARCH_URL}${search.value}`);
+      const json = await response.json();
+      insertMovieDivs(json);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
+function toggleDesc(e) {
+  if (e.target.classList.contains('desc-toggle-btn')) {
+    e.target.style.opacity = 0;
+    e.target.nextElementSibling.style.transform = 'translateY(0)';
+    console.dir(e.target);
+  }
+}
+
+fetchAPI();
 searchForm.addEventListener('submit', searchAPI);
+main.addEventListener('click', toggleDesc);
