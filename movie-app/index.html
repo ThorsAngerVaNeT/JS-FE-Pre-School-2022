@@ -6,15 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie App</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <header class="header">
+      <a href="."><img src="./assets/svg/logo.svg" class="logo" alt="Movie App Logo" /></a>
+      <h1>Movie App</h1>
       <form action="" method="get" id="search-form">
-        <input type="text" name="search" id="search" placeholder="Search" />
+        <input type="text" class="search-input" name="search" id="search" placeholder="Search" autofocus />
       </form>
     </header>
     <main class="main"></main>
-    <footer></footer>
+    <footer class="footer-container">
+      <div class="footer-copyright">
+        <div>©</div>
+        <div>2022</div>
+        <div><a href="https://github.com/ThorsAngerVaNeT/">github</a></div>
+      </div>
+      <div>
+        <a href="https://rs.school/js-stage0/" target="_blank" title="Rolling Scopes School">Rolling Scopes School</a>
+      </div>
+      <a href="https://www.themoviedb.org/" title="This product uses the TMDB API but is not endorsed or certified by TMDB.">
+        <img class="api-logo" src="./assets/svg/tmdb.svg" alt="TMDb Logo" />
+      </a>
+    </footer>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

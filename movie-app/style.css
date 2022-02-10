@@ -4,13 +4,62 @@
 
 body {
   max-width: 1440px;
-  margin: 0 auto;
+  min-height: 100vh;
+  margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #020d18;
+  color: #abb7c4;
   overflow-x: hidden;
 }
 
 .header {
   height: 90px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0f2133;
+}
+
+.logo {
+  width: 32px;
+  filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%);
+}
+
+.logo:hover {
+  animation-duration: 1s;
+  animation-name: spin;
+  animation-timing-function: ease-out;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#search-form {
+  /* width: 80%; */
+  margin: 10px;
+}
+
+.search-input {
+  padding-left: 10px;
+  background-color: #0f2133;
+  border: 2px solid #abb7c4;
+  border-radius: 50px;
+  color: #abb7c4;
+  font-weight: 700;
+}
+
+.search-input:focus,
+.movie-card:hover {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 25px rgb(102 175 233 / 60%);
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 25px rgb(102 175 233 / 60%);
 }
 
 .main {
@@ -23,15 +72,71 @@ body {
 .movie-card {
   margin: 10px;
   width: 300px;
+  transition: 1s;
 }
 
 .movie-card img {
   width: 100%;
 }
 
+.movie-card:hover {
+  transform: scale(1.025);
+}
+
+.movie-card:hover .info-title h3 {
+  color: aqua;
+}
+
 .info {
   padding: 0.5rem 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+}
+
+.info-title {
+  width: 80%;
+}
+
+.info-title h3 {
+  margin: 0;
+  display: inline;
+  transition: 1s;
+}
+
+.footer-container {
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 50px;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.footer-copyright {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-container a {
+  text-decoration: none;
+  color: var(--color-white);
+  transition: 0.5s;
+}
+
+.footer-container a:hover {
+  color: var(--color-gold);
+}
+
+.api-logo {
+  width: 50px;
+  height: 39.95px;
+}
+
+i {
+  color: #f5b50a;
 }
