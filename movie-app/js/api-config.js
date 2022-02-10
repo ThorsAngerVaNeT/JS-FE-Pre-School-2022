@@ -64,3 +64,6 @@ export const API_CONF = {
     'videos',
   ],
 };
+
+export const API_KEY = 'f130e240d623a7adb18290b77ec4928f';
+export const API_URL = 'https://api.themoviedb.org/3/';

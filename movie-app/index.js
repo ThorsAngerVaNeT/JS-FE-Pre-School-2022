@@ -1,41 +1,62 @@
-import { API_CONF } from './js/api-config.js';
+import { API_CONF, API_KEY, API_URL } from './js/api-config.js';
 import data from './movies.js';
 
+const searchForm = document.getElementById('search-form');
+const search = document.getElementById('search');
+const main = document.querySelector('.main');
+
 function fetchAPI() {
-  fetch('https://api.themoviedb.org/3/discover/movie/?sort_by=popularity.desc&api_key=f130e240d623a7adb18290b77ec4928f&page=1')
+  fetch(`${API_URL}discover/movie/?sort_by=popularity.desc&api_key=${API_KEY}&page=1`)
     .then(res => res.json())
     .then(json => insertMovieDivs(json))
     .catch(err => console.log(err));
 }
-
-const main = document.querySelector('.main');
-
+//https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=%22captain
 insertMovieDivs(data);
 function insertMovieDivs(json) {
-  console.log(json);
-  json.results.forEach(movie => {
-    let divMovie = document.createElement('div');
-    divMovie.classList.add('movie-card');
+  // console.log(json);
+  main.innerHTML = '';
+  if (json.results.length === 0) main.innerHTML = 'Nothing Found!';
+  else
+    json.results.forEach(movie => {
+      let divMovie = document.createElement('div');
+      divMovie.classList.add('movie-card');
 
-    let imgMovie = document.createElement('img');
-    imgMovie.src = `${API_CONF.images.base_url}/w780/${movie.poster_path}`;
-    imgMovie.alt = `${movie.title}`;
-    divMovie.appendChild(imgMovie);
+      let imgMovie = document.createElement('img');
+      imgMovie.src = `${API_CONF.images.base_url}/w780/${movie.poster_path}`;
+      imgMovie.alt = `${movie.title}`;
+      divMovie.appendChild(imgMovie);
 
-    let divInfo = document.createElement('div');
-    divInfo.classList.add('info');
-    let title = document.createElement('h3');
-    title.textContent = movie.title;
-    let score = document.createElement('span');
-    score.textContent = movie.vote_average;
-    divInfo.appendChild(title);
-    divInfo.appendChild(score);
-    divMovie.appendChild(divInfo);
+      let divInfo = document.createElement('div');
+      divInfo.classList.add('info');
+      let title = document.createElement('h3');
+      title.textContent = movie.title;
+      let score = document.createElement('span');
+      score.textContent = movie.vote_average;
+      divInfo.appendChild(title);
+      divInfo.appendChild(score);
+      divMovie.appendChild(divInfo);
 
-    // TODO add poster, title, score, desc
-    main.appendChild(divMovie);
-  });
+      let divOverview = document.create;
+
+      // TODO add poster, title, score, desc
+      main.appendChild(divMovie);
+    });
 }
+
+function searchAPI(e) {
+  e.preventDefault();
+
+  if (search.value !== '') {
+    fetch(`${API_URL}search/movie/?sort_by=popularity.desc&api_key=${API_KEY}&query=${search.value}`)
+      .then(res => res.json())
+      .then(json => insertMovieDivs(json))
+      .catch(err => console.log(err));
+  }
+}
+
+searchForm.addEventListener('submit', searchAPI);
+
 // fetchAPI();
 
 // adult: false

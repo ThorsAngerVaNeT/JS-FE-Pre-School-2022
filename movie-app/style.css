@@ -9,6 +9,10 @@ body {
   overflow-x: hidden;
 }
 
+.header {
+  height: 90px;
+}
+
 .main {
   margin: 0 auto;
   display: flex;
