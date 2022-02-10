@@ -190,7 +190,6 @@ function togglePlay() {
   } else {
     video.pause();
   }
-  updatePlayButton();
 }
 
 function updatePlayButton() {
@@ -360,6 +359,8 @@ function keyboardShortcuts(event) {
 // }
 
 video.addEventListener('click', togglePlay);
+video.addEventListener('play', updatePlayButton);
+video.addEventListener('pause', updatePlayButton);
 playBtn.addEventListener('click', togglePlay);
 videoPlayerBtn.addEventListener('click', togglePlay);
 
