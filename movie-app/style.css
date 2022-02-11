@@ -46,12 +46,17 @@ body {
 }
 
 .search-input {
-  padding-left: 10px;
+  padding: 0 10px;
   background-color: #0f2133;
   border: 2px solid #abb7c4;
   border-radius: 50px;
   color: #abb7c4;
+  font-size: 18px;
   font-weight: 700;
+}
+
+.search-input::-webkit-search-cancel-button {
+  cursor: pointer;
 }
 
 .search-input:focus,
@@ -68,17 +73,21 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 40px;
 }
 
 .movie-card {
   width: 300px;
   margin: 10px;
-  position: relative;
   transition: 1s;
 }
 
-.movie-card img {
+.img-desc img {
+  /* -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4)); */
   width: 100%;
+}
+.img-desc {
+  position: relative;
 }
 
 .movie-card:hover {
@@ -139,6 +148,12 @@ body {
   vertical-align: middle;
 }
 
+.rs-logo {
+  height: 39.95px;
+  vertical-align: middle;
+  filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%);
+}
+
 i {
   color: #f5b50a;
 }
@@ -149,7 +164,7 @@ i {
 }
 
 .desc-text {
-  margin-bottom: 68px;
+  /* margin-bottom: 68px; */
   max-height: 50%;
   padding: 20px;
   position: absolute;
@@ -164,7 +179,7 @@ i {
 }
 
 .movie-card:hover .desc-text {
-  transform: translateY(0);
+  transform: translateY(-2%);
 }
 
 .desc-text h3 {
