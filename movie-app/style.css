@@ -46,6 +46,7 @@ body {
 }
 
 .search-input {
+  height: 32px;
   padding: 0 10px;
   background-color: #0f2133;
   border: 2px solid #abb7c4;
@@ -184,4 +185,36 @@ i {
 
 .desc-text h3 {
   margin: 10px 0;
+}
+
+.radio-group {
+  display: inline;
+  overflow: hidden;
+}
+
+.radio-group-item {
+  display: inline;
+  float: left;
+}
+
+.radio-group input {
+  display: none;
+}
+
+.radio-group label {
+  padding: 0 15px;
+  display: inline-block;
+  line-height: 34px;
+  border: 1px solid #999;
+  border-radius: 6px 0 0 6px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.radio-group .radio-group-item:last-child label {
+  border-radius: 0 6px 6px 0;
+}
+
+.radio-group input[type='radio']:checked + label {
+  background-color: rgb(102 175 233 / 60%);
 }

@@ -4,10 +4,13 @@ import data from './js/movies.js';
 const searchForm = document.getElementById('search-form');
 const search = document.getElementById('search');
 const main = document.querySelector('.main');
+const radios = document.querySelectorAll('input[name="radio"]');
 
 async function fetchAPI() {
   try {
-    const response = await fetch(`${API_URL}`);
+    const radio = document.querySelector('input[name="radio"]:checked');
+    const radioValue = '/' + radio.value;
+    const response = await fetch(`${API_URL.replace('/movie', radioValue)}`);
     const json = await response.json();
     insertMovieDivs(json);
   } catch (error) {
@@ -22,12 +25,12 @@ function insertMovieDivs(json) {
     json.results.forEach(movie => {
       const divMovie = `<div class="movie-card">
           <div class="img-desc">
-            <img src="${API_CONF.images.base_url}w780${movie.poster_path}" alt="${movie.title}">
+            <img src="${API_CONF.images.base_url}w780${movie.poster_path}" alt="${movie.title || movie.name}">
             <div class="desc-text"><h3>Overview</h3>${movie.overview}</div>
           </div>
           <div class="info">
             <div class="info-title">
-              <h3>${movie.title}</h3> (${new Date(movie.release_date).getFullYear()})
+              <h3>${movie.title || movie.name}</h3> (${new Date(movie.release_date || movie.first_air_date).getFullYear()})
             </div>
             <div class="info-score">
               <i class="fa-solid fa-star"></i>
@@ -44,7 +47,9 @@ async function searchAPI(e) {
 
   if (search.value !== '') {
     try {
-      const response = await fetch(`${SEARCH_URL}${search.value}`);
+      const radio = document.querySelector('input[name="radio"]:checked');
+      const radioValue = '/' + radio.value;
+      const response = await fetch(`${SEARCH_URL.replace('/movie', radioValue)}${search.value}`);
       const json = await response.json();
       insertMovieDivs(json);
     } catch (error) {
@@ -55,3 +60,4 @@ async function searchAPI(e) {
 
 fetchAPI();
 searchForm.addEventListener('submit', searchAPI);
+radios.forEach(r => r.addEventListener('click', fetchAPI));

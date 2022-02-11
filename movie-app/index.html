@@ -13,6 +13,16 @@
     <header class="header">
       <a href="."><img src="./assets/svg/logo.svg" class="logo" alt="Movie App Logo" /></a>
       <h1>Movie App</h1>
+      <div class="radio-group">
+        <div class="radio-group-item">
+          <input id="radio-1" type="radio" name="radio" value="movie" checked />
+          <label for="radio-1">Movie</label>
+        </div>
+        <div class="radio-group-item">
+          <input id="radio-2" type="radio" name="radio" value="tv" />
+          <label for="radio-2">TV</label>
+        </div>
+      </div>
       <form method="get" id="search-form">
         <input type="search" class="search-input" name="search" id="search" placeholder="Search" autocomplete="off" autofocus />
       </form>

@@ -66,5 +66,5 @@ export const API_CONF = {
 };
 
 export const API_KEY = 'f130e240d623a7adb18290b77ec4928f';
-export const API_URL = `https://api.themoviedb.org/3/discover/movie/?sort_by=popularity.desc&api_key=${API_KEY}&page=1`;
-export const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/?sort_by=popularity.desc&api_key=${API_KEY}&query=`;
+export const API_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&page=1`;
+export const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&api_key=${API_KEY}&query=`;
