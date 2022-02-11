@@ -24,6 +24,12 @@ body {
   background-color: #0f2133;
 }
 
+.header div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .logo {
   width: 32px;
   filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%);
