@@ -38,7 +38,7 @@ function insertMovieDivs(json) {
         </div>`;
       main.insertAdjacentHTML('beforeend', divMovie);
       const poster = main.querySelector('.movie-card:last-child .poster');
-      poster.style.backgroundImage = `url("${API_CONF.images.base_url}w780${movie.poster_path}")`;
+      poster.style.backgroundImage = `url("${API_CONF.images.secure_base_url}w780${movie.poster_path}")`;
     });
 }
 

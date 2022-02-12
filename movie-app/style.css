@@ -36,14 +36,7 @@ body {
 }
 
 .logo:hover {
-  animation-duration: 1s;
-  animation-name: spin;
-  animation-timing-function: ease-out;
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  animation: rotation 1s infinite linear;
 }
 
 #search-form {
@@ -201,6 +194,10 @@ i {
   overflow-y: auto;
 }
 
+.movie-card:hover .overview {
+  transform: rotateY(0);
+}
+
 .movie-card .overview h3 {
   margin: 1em 0 0;
 }
@@ -223,6 +220,14 @@ i {
   align-items: center;
 }
 
-.movie-card:hover .overview {
-  transform: rotateY(0);
+.info-score i:hover {
+  animation: rotation 1s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
