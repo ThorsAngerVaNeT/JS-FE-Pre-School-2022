@@ -76,7 +76,7 @@ body {
 .main {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -162,6 +162,7 @@ i {
   width: 300px;
   position: relative;
   perspective: 1000px;
+  transition: all 0.5s ease-in-out 0.5s;
 }
 
 .poster {
@@ -171,8 +172,13 @@ i {
   transition: all 0.5s ease-in-out 0s;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   border: 2px solid rgb(102 175 233 / 60%);
   border-radius: 10px;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
 }
 
 .movie-card:hover .poster {
@@ -187,13 +193,16 @@ i {
   top: 0;
   left: 0;
   line-height: 24px;
-  background-color: #0f2133;
+  background-color: rgba(15, 33, 51, 0.8);
   border: 2px solid rgb(102 175 233 / 60%);
   border-radius: 10px;
   transform: rotateY(90deg);
   transition: all 0.5s ease-in-out 0s;
   overflow-y: auto;
-  opacity: 0.8;
+}
+
+.movie-card .overview h3 {
+  margin: 1em 0 0;
 }
 
 .movie-card .info {

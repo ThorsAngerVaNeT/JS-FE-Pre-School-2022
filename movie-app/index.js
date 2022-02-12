@@ -25,7 +25,7 @@ function insertMovieDivs(json) {
     json.results.forEach(movie => {
       const divMovie = `<div class="movie-card">
           <div class="poster"></div>
-          <div class="overview"><h3>Overview</h3>${movie.overview}</div>
+          <div class="overview"><h3>Overview</h3><hr>${movie.overview}</div>
           <div class="info">              
             <div class="info-title">
               <h3>${movie.title || movie.name}</h3> (${new Date(movie.release_date || movie.first_air_date).getFullYear()})
@@ -58,7 +58,27 @@ async function searchAPI(e) {
   }
 }
 
-// fetchAPI();
-insertMovieDivs(data);
+fetchAPI();
+// insertMovieDivs(data);
 searchForm.addEventListener('submit', searchAPI);
 radios.forEach(r => r.addEventListener('click', fetchAPI));
+
+console.log(
+  'js30#2.3-movie-app. Самооценка 70/70 баллов:\n' +
+    '%c\t\u2713 %cВёрстка +10\n' +
+    '%c\t\u2713 %cПри загрузке приложения на странице отображаются карточки фильмов с полученными от API данными +10\n' +
+    '%c\t\u2713 %cЕсли в поле поиска ввести слово и отправить поисковый запрос, на странице отобразятся карточки фильмов, в названиях которых есть это слово, если такие данные предоставляет API +10\n' +
+    '%c\t\u2713 %cПоиск +30\n' +
+    '%c\t\u2713 %cОчень высокое качество оформления приложения и/или дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10:\n' +
+    '\tреализовано собственное оригинальное оформление и возможность переключения вывода информации по фильмам или ТВ-сериалам',
+  'color: green',
+  '',
+  'color: green',
+  '',
+  'color: green',
+  '',
+  'color: green',
+  '',
+  'color: green',
+  ''
+);
