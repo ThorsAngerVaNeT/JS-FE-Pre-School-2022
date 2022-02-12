@@ -24,11 +24,9 @@ function insertMovieDivs(json) {
   else
     json.results.forEach(movie => {
       const divMovie = `<div class="movie-card">
-          <div class="img-desc">
-            <img src="${API_CONF.images.base_url}w780${movie.poster_path}" alt="${movie.title || movie.name}">
-            <div class="desc-text"><h3>Overview</h3>${movie.overview}</div>
-          </div>
-          <div class="info">
+          <div class="poster"></div>
+          <div class="overview"><h3>Overview</h3>${movie.overview}</div>
+          <div class="info">              
             <div class="info-title">
               <h3>${movie.title || movie.name}</h3> (${new Date(movie.release_date || movie.first_air_date).getFullYear()})
             </div>
@@ -39,6 +37,8 @@ function insertMovieDivs(json) {
           </div>
         </div>`;
       main.insertAdjacentHTML('beforeend', divMovie);
+      const poster = main.querySelector('.movie-card:last-child .poster');
+      poster.style.backgroundImage = `url("${API_CONF.images.base_url}w780${movie.poster_path}")`;
     });
 }
 
@@ -58,6 +58,7 @@ async function searchAPI(e) {
   }
 }
 
-fetchAPI();
+// fetchAPI();
+insertMovieDivs(data);
 searchForm.addEventListener('submit', searchAPI);
 radios.forEach(r => r.addEventListener('click', fetchAPI));

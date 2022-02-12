@@ -66,8 +66,7 @@ body {
   cursor: pointer;
 }
 
-.search-input:focus,
-.movie-card:hover {
+.search-input:focus {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 25px rgb(102 175 233 / 60%);
@@ -77,49 +76,11 @@ body {
 .main {
   max-width: 1440px;
   margin: 0 auto;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
-}
-
-.movie-card {
-  width: 300px;
-  margin: 10px;
-  transition: 1s;
-}
-
-.img-desc img {
-  /* -webkit-box-reflect: below 5px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4)); */
-  width: 100%;
-}
-.img-desc {
-  position: relative;
-}
-
-.movie-card:hover {
-  transform: scale(1.025);
-}
-
-.movie-card:hover .info-title h3 {
-  color: aqua;
-}
-
-.info {
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.info-title {
-  width: 80%;
-}
-
-.info-title h3 {
-  margin: 0;
-  display: inline;
-  transition: 1s;
 }
 
 .footer-container {
@@ -165,34 +126,6 @@ i {
   color: #f5b50a;
 }
 
-.movie-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.desc-text {
-  /* margin-bottom: 68px; */
-  max-height: 50%;
-  padding: 20px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
-  transform: translateY(161%);
-  background-color: #020d18;
-  opacity: 0.95;
-  transition: transform 0.5s ease-in;
-}
-
-.movie-card:hover .desc-text {
-  transform: translateY(-2%);
-}
-
-.desc-text h3 {
-  margin: 10px 0;
-}
-
 .radio-group {
   display: inline;
   overflow: hidden;
@@ -223,4 +156,64 @@ i {
 
 .radio-group input[type='radio']:checked + label {
   background-color: rgb(102 175 233 / 60%);
+}
+
+.movie-card {
+  width: 300px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.poster {
+  width: 300px;
+  height: 450px;
+  transform: rotateY(0);
+  transition: all 0.5s ease-in-out 0s;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 2px solid rgb(102 175 233 / 60%);
+  border-radius: 10px;
+}
+
+.movie-card:hover .poster {
+  transform: rotateY(-90deg);
+}
+
+.movie-card .overview {
+  width: 300px;
+  height: 450px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 24px;
+  background-color: #0f2133;
+  border: 2px solid rgb(102 175 233 / 60%);
+  border-radius: 10px;
+  transform: rotateY(90deg);
+  transition: all 0.5s ease-in-out 0s;
+  overflow-y: auto;
+  opacity: 0.8;
+}
+
+.movie-card .info {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.movie-card .info .info-title h3 {
+  display: inline;
+}
+.movie-card .info .info-score {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-card:hover .overview {
+  transform: rotateY(0);
 }
