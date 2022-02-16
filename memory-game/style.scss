@@ -22,7 +22,7 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #0f2133;
- 
+  
   div:first-child {
     display: flex;
     align-items: center;
@@ -31,8 +31,10 @@ body {
 }
 
 .logo {
-  width: 32px;
+  width: 64px;
+  height: 64px;
   background-color: aliceblue;
+  border-radius: 50%;
   /* filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%); */
   
   &:hover {
@@ -60,27 +62,27 @@ body {
   line-height: 50px;
   text-align: center;
   background-color: #0f2133;
-}
-
-.footer-copyright {
-  display: flex;
-  gap: 20px;
-
-  a {
-    text-decoration: none;
-    color: #abb7c4;
-    transition: 0.5s;
+  
+  .footer-copyright {
+    display: flex;
+    gap: 20px;
+  
+    a {
+      text-decoration: none;
+      color: #abb7c4;
+      transition: 0.5s;
+    }
+  
+    a:hover {
+      color: #66afe9;
+    }
   }
-
-  a:hover {
-    color: #66afe9;
+  
+  .rs-logo {
+    height: 39.95px;
+    vertical-align: middle;
+    filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%);
   }
-}
-
-.rs-logo {
-  height: 39.95px;
-  vertical-align: middle;
-  filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%);
 }
 
 @keyframes rotation {
@@ -90,4 +92,60 @@ body {
   to {
     transform: rotate(359deg);
   }
+}
+
+
+.cards {
+  display: grid;
+  grid-template: repeat(3, 1fr)/repeat(6, 1fr);
+  // grid-area: 1/1/6/6;
+  gap: 40px;
+  
+  .card {
+    width: 132px;
+    height: 168px;
+    position: relative;    
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease-out;
+    
+    %card-shared {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+      box-shadow: -6px -6px 36px 2px rgba(0, 0, 0, 0.15) inset;
+      // transition: transform 0.5s ease-in-out 0s;
+    }
+
+    .card-back {
+      @extend %card-shared;
+      background-color: #66afe9;
+      border-radius: 10px;
+      transform: rotateY(0deg);
+    }
+  
+    .card-front {
+      @extend %card-shared;
+      background-color: #abb7c4;
+      border-radius: 10px;
+      transform: rotateY(180deg);
+    }
+
+    .is-selected{
+      transform: translate3d(0, 0, 0) rotateY(180deg);
+    }
+    &:hover{
+      transform: translate3d(0, 0, 0) rotateY(180deg);
+    }
+
+    svg{
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
+  }
+  
 }
