@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -12,6 +13,7 @@ body {
   background-color: #020d18;
   color: #abb7c4;
   font-size: 18px;
+  font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 }
 
@@ -45,9 +47,23 @@ body {
   margin: 0 auto;
   padding: 40px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   gap: 40px;
+}
+.main .score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.main .score span {
+  color: antiquewhite;
+}
+.main .score span.last-turn {
+  color: crimson;
 }
 
 .footer-container {
@@ -92,6 +108,9 @@ body {
   grid-template: repeat(3, 1fr)/repeat(6, 1fr);
   gap: 40px;
 }
+.cards [data-matched=true] {
+  transform: translate3d(0, 0, 0) rotateY(180deg);
+}
 .cards .card {
   width: 132px;
   height: 168px;
@@ -99,6 +118,9 @@ body {
   transform: translate3d(0, 0, 0);
   transform-style: preserve-3d;
   transition: transform 0.4s ease-out;
+  /* &:hover{
+    transform: translate3d(0, 0, 0) rotateY(180deg);
+  } */
 }
 .cards .card .card-back, .cards .card .card-front {
   width: 100%;
@@ -119,10 +141,7 @@ body {
   border-radius: 10px;
   transform: rotateY(180deg);
 }
-.cards .card .is-selected {
-  transform: translate3d(0, 0, 0) rotateY(180deg);
-}
-.cards .card:hover {
+.cards .card.selected, .cards .card[data-matched=true] {
   transform: translate3d(0, 0, 0) rotateY(180deg);
 }
 .cards .card svg {
