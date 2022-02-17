@@ -16,6 +16,9 @@ body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 }
+body.bright {
+  filter: brightness(3);
+}
 
 .header {
   height: 90px;
@@ -118,9 +121,7 @@ body {
   transform: translate3d(0, 0, 0);
   transform-style: preserve-3d;
   transition: transform 0.4s ease-out;
-  /* &:hover{
-    transform: translate3d(0, 0, 0) rotateY(180deg);
-  } */
+  border-radius: 10px;
 }
 .cards .card .card-back, .cards .card .card-front {
   width: 100%;
@@ -128,26 +129,58 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  background-clip: padding-box;
   backface-visibility: hidden;
   box-shadow: -6px -6px 36px 2px rgba(0, 0, 0, 0.15) inset;
+  border-radius: 10px;
 }
 .cards .card .card-back {
   background-color: #66afe9;
-  border-radius: 10px;
   transform: rotateY(0deg);
 }
 .cards .card .card-front {
   background-color: #abb7c4;
-  border-radius: 10px;
   transform: rotateY(180deg);
 }
 .cards .card.selected, .cards .card[data-matched=true] {
   transform: translate3d(0, 0, 0) rotateY(180deg);
 }
+.cards .card[data-matched=true] .card-front {
+  animation: lightning 2s linear 0.65s, matchSuccess 0.5s ease-out 0.65s;
+}
 .cards .card svg {
   width: 100%;
   height: 100%;
   padding: 10px;
+}
+
+@keyframes lightning {
+  0% {
+    box-shadow: 0 0 10px 6px white;
+  }
+  25% {
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.75);
+  }
+  50% {
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.5);
+  }
+  75% {
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0);
+  }
+}
+@keyframes matchSuccess {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

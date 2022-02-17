@@ -1,3 +1,10 @@
+$anime-time: 8s;
+
+$box-size: 168px;
+$clip-distance: .05;
+$clip-size: $box-size * (1 + $clip-distance * 2);
+$path-width: 2px;
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
@@ -16,6 +23,10 @@ body {
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
+
+  &.bright{
+    filter: brightness(3);
+  }
 }
 
 .header {
@@ -133,6 +144,7 @@ body {
     transform: translate3d(0, 0, 0);
     transform-style: preserve-3d;
     transition: transform 0.4s ease-out;
+    border-radius: 10px;
     
     %card-shared {
       width: 100%;
@@ -140,15 +152,16 @@ body {
       position: absolute;
       top: 0;
       left: 0;
+      background-clip: padding-box;
       backface-visibility: hidden;
       box-shadow: -6px -6px 36px 2px rgba(0, 0, 0, 0.15) inset;
+      border-radius: 10px;
       // transition: transform 0.5s ease-in-out 0s;
     }
 
     .card-back {
       @extend %card-shared;
       background-color: #66afe9;
-      border-radius: 10px;
       transform: rotateY(0deg);
       // border: 30px solid;
       // border-image: url('./assets/svg/celtic-knot.svg') 800 305 round;
@@ -157,17 +170,18 @@ body {
     .card-front {
       @extend %card-shared;
       background-color: #abb7c4;
-      border-radius: 10px;
-      transform: rotateY(180deg);
+      transform: rotateY(180deg);      
     }
 
     &.selected,
     &[data-matched=true] {
       transform: translate3d(0, 0, 0) rotateY(180deg);
     }
-    /* &:hover{
-      transform: translate3d(0, 0, 0) rotateY(180deg);
-    } */
+
+    &[data-matched=true] .card-front {
+      animation: lightning 2s linear 0.65s,
+                matchSuccess 0.5s ease-out 0.65s;
+    }
 
     svg {
       width: 100%;
@@ -176,4 +190,35 @@ body {
     }
   }
   
+}
+
+@keyframes lightning {
+  0% {    
+    box-shadow: 0 0 10px 6px rgba(255,255,255,1);
+  }
+  25% {
+    box-shadow: 0 0 10px 6px rgba(255,255,255,0.75);
+  }
+  50% {
+    box-shadow: 0 0 10px 6px rgba(255,255,255,0.5);
+  }
+  75% {
+    box-shadow: 0 0 10px 6px rgba(255,255,255,0.25);
+  }
+  100%{
+    box-shadow: 0 0 10px 6px rgba(255,255,255,0);
+  }
+  
+}
+
+@keyframes matchSuccess {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
+  }  
 }

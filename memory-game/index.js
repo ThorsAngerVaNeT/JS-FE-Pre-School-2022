@@ -8,6 +8,9 @@ let attemptsCount = 0;
 let winsCount = 0;
 const timeout = 650;
 
+const soundTurn = new Audio('./assets/audio/blop.mp3');
+const soundMatch = new Audio('./assets/audio/2sec.mp3');
+
 function shuffleCards() {
   let cards = Array.from(cardsEl.children);
   while (cards.length) {
@@ -23,16 +26,25 @@ function selectCard(e) {
     e.target.closest('.card').dataset.matched !== 'true' &&
     selectedLength < 2
   ) {
+    soundTurn.play();
     e.target.closest('.card').classList.toggle('selected');
     const selected = cardsEl.querySelectorAll('.selected');
-    if (selected.length > 1) {
+    if (selected.length === 2) {
       cardsEl.removeEventListener('click', selectCard);
       const [cardOneEl, cardTwoEl] = selected;
       const cardOne = cardOneEl.dataset.type;
       const cardTwo = cardTwoEl.dataset.type;
       if (cardOne === cardTwo) {
+        setTimeout(() => {
+          soundMatch.play();
+          document.body.classList.add('bright');
+          setTimeout(() => {
+            document.body.classList.remove('bright');
+          }, 100);
+        }, timeout);
         //play sound
         //add match animation
+        // document.body.style.filter = 'brightness(3)';
         cardOneEl.dataset.matched = true;
         cardTwoEl.dataset.matched = true;
         cardOneEl.classList.toggle('selected');
