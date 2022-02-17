@@ -68,6 +68,20 @@ body.bright {
 .main .score span.last-turn {
   color: crimson;
 }
+.main .volume {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  color: #abb7c4;
+  font-size: 32px;
+  vertical-align: center;
+  cursor: pointer;
+}
+.main .volume:hover {
+  color: antiquewhite;
+}
 
 .footer-container {
   padding: 10px 20px;
@@ -152,6 +166,9 @@ body.bright {
   width: 100%;
   height: 100%;
   padding: 10px;
+}
+.cards.win .card {
+  animation: matchSuccess 0.5s ease-out;
 }
 
 @keyframes lightning {

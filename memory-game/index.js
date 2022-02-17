@@ -2,6 +2,8 @@ const cardsEl = document.querySelector('.cards');
 const turnsSpan = document.querySelector('.turns span');
 const attemptsSpan = document.querySelector('.attempts span');
 const winsSpan = document.querySelector('.wins span');
+const volume = document.querySelector('.volume');
+const volumeIcon = document.querySelector('.volume i');
 
 let turnsCount = 2;
 let attemptsCount = 0;
@@ -10,6 +12,9 @@ const timeout = 650;
 
 const soundTurn = new Audio('./assets/audio/blop.mp3');
 const soundMatch = new Audio('./assets/audio/2sec.mp3');
+const soundFail = new Audio('./assets/audio/fail.m4a');
+const soundReset = new Audio('./assets/audio/reset.m4a');
+const soundWin = new Audio('./assets/audio/win.m4a');
 
 function shuffleCards() {
   let cards = Array.from(cardsEl.children);
@@ -26,7 +31,7 @@ function selectCard(e) {
     e.target.closest('.card').dataset.matched !== 'true' &&
     selectedLength < 2
   ) {
-    soundTurn.play();
+    if (volumeIcon.classList.contains('fa-volume-high')) soundTurn.play();
     e.target.closest('.card').classList.toggle('selected');
     const selected = cardsEl.querySelectorAll('.selected');
     if (selected.length === 2) {
@@ -36,7 +41,11 @@ function selectCard(e) {
       const cardTwo = cardTwoEl.dataset.type;
       if (cardOne === cardTwo) {
         setTimeout(() => {
-          soundMatch.play();
+          if (
+            cardsEl.querySelectorAll('[data-matched="true').length !== cardsEl.children.length &&
+            volumeIcon.classList.contains('fa-volume-high')
+          )
+            soundMatch.play();
           document.body.classList.add('bright');
           setTimeout(() => {
             document.body.classList.remove('bright');
@@ -52,6 +61,7 @@ function selectCard(e) {
       } else {
         //play sound
         setTimeout(() => {
+          if (turnsCount > 0 && volumeIcon.classList.contains('fa-volume-high')) soundFail.play();
           turnsCount -= 1;
           turnsSpan.textContent = turnsCount;
           cardOneEl.classList.toggle('selected');
@@ -66,6 +76,7 @@ function selectCard(e) {
 
         if (turnsCount <= 0) {
           setTimeout(() => {
+            if (volumeIcon.classList.contains('fa-volume-high')) soundReset.play();
             turnsCount = 2;
             turnsSpan.textContent = turnsCount;
             attemptsCount += 1;
@@ -82,14 +93,35 @@ function selectCard(e) {
       setTimeout(() => {
         //play sound
         //show win message
+        let results = [];
+        console.log(localStorage.results);
+        if (localStorage.results !== undefined) results = JSON.parse(localStorage.results);
+        if (results.length === 10) {
+          results.pop();
+        }
+        results.unshift({ turnsCount, attemptsCount, winsCount, date: new Date().format('hh:MM:ss dd.mm.yyyy') });
+        localStorage.results = JSON.stringify(results);
         winsCount += 1;
         winsSpan.textContent = winsCount;
-        alert('WINNER');
-        cardsEl.querySelectorAll('[data-matched="true"').forEach(el => (el.dataset.matched = false));
-        shuffleCards();
+        setTimeout(() => {
+          cardsEl.classList.add('win');
+          if (volumeIcon.classList.contains('fa-volume-high')) soundWin.play();
+          setTimeout(() => {
+            cardsEl.classList.remove('win');
+          }, timeout);
+        }, timeout);
+        // alert('WINNER');
+        // cardsEl.querySelectorAll('[data-matched="true"').forEach(el => (el.dataset.matched = false));
+        // shuffleCards();
       }, timeout);
     }
   }
 }
 
+function volumeToggle() {
+  volumeIcon.classList.toggle('fa-volume-high');
+  volumeIcon.classList.toggle('fa-volume-xmark');
+}
+
 cardsEl.addEventListener('click', selectCard);
+volume.addEventListener('click', volumeToggle);

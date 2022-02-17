@@ -79,8 +79,23 @@ body {
       &.last-turn {
         color: crimson;
       }
+    }    
+  }
+
+  .volume {
+    display: inline;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    color: #abb7c4;
+    font-size: 32px;
+    vertical-align: center;
+    cursor: pointer;
+
+    &:hover{
+      color: antiquewhite;
     }
-    
   }
 }
 
@@ -188,6 +203,10 @@ body {
       height: 100%;
       padding: 10px;
     }
+  }
+
+  &.win .card {
+    animation: matchSuccess 0.5s ease-out;
   }
   
 }
