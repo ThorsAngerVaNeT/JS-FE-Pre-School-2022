@@ -1,11 +1,11 @@
 $anime-time: 8s;
 
 $box-size: 168px;
-$clip-distance: .05;
+$clip-distance: 0.05;
 $clip-size: $box-size * (1 + $clip-distance * 2);
 $path-width: 2px;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&display=swap');
 
 * {
   box-sizing: border-box;
@@ -24,7 +24,7 @@ body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 
-  &.bright{
+  &.bright {
     filter: brightness(3);
   }
 }
@@ -36,7 +36,7 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #0f2133;
-  
+
   div:first-child {
     display: flex;
     align-items: center;
@@ -50,7 +50,7 @@ body {
   background-color: aliceblue;
   border-radius: 50%;
   /* filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%); */
-  
+
   &:hover {
     animation: rotation 1s infinite linear;
   }
@@ -74,12 +74,12 @@ body {
     font-weight: bold;
 
     span {
-      color:antiquewhite;
-      
+      color: antiquewhite;
+
       &.last-turn {
         color: crimson;
       }
-    }    
+    }
   }
 
   .volume {
@@ -90,10 +90,11 @@ body {
     border-radius: 50%;
     color: #abb7c4;
     font-size: 32px;
-    vertical-align: center;
+    vertical-align: middle;
     cursor: pointer;
+    outline-offset: 5px;
 
-    &:hover{
+    &:hover {
       color: antiquewhite;
     }
   }
@@ -109,22 +110,22 @@ body {
   line-height: 50px;
   text-align: center;
   background-color: #0f2133;
-  
+
   .footer-copyright {
     display: flex;
     gap: 20px;
-  
+
     a {
       text-decoration: none;
       color: #abb7c4;
       transition: 0.5s;
     }
-  
+
     a:hover {
       color: #66afe9;
     }
   }
-  
+
   .rs-logo {
     height: 39.95px;
     vertical-align: middle;
@@ -141,26 +142,25 @@ body {
   }
 }
 
-
 .cards {
   display: grid;
-  grid-template: repeat(3, 1fr)/repeat(6, 1fr);
+  grid-template: repeat(3, 1fr) / repeat(6, 1fr);
   // grid-area: 1/1/6/6;
   gap: 40px;
-  
-  [data-matched=true] {
+
+  [data-matched='true'] {
     transform: translate3d(0, 0, 0) rotateY(180deg);
   }
-  
+
   .card {
     width: 132px;
     height: 168px;
-    position: relative;    
+    position: relative;
     transform: translate3d(0, 0, 0);
     transform-style: preserve-3d;
     transition: transform 0.4s ease-out;
     border-radius: 10px;
-    
+
     %card-shared {
       width: 100%;
       height: 100%;
@@ -181,21 +181,20 @@ body {
       // border: 30px solid;
       // border-image: url('./assets/svg/celtic-knot.svg') 800 305 round;
     }
-  
+
     .card-front {
       @extend %card-shared;
       background-color: #abb7c4;
-      transform: rotateY(180deg);      
+      transform: rotateY(180deg);
     }
 
     &.selected,
-    &[data-matched=true] {
+    &[data-matched='true'] {
       transform: translate3d(0, 0, 0) rotateY(180deg);
     }
 
-    &[data-matched=true] .card-front {
-      animation: lightning 2s linear 0.65s,
-                matchSuccess 0.5s ease-out 0.65s;
+    &[data-matched='true'] .card-front {
+      animation: lightning 1s linear 0.65s, matchSuccess 0.5s ease-out 0.65s;
     }
 
     svg {
@@ -208,26 +207,142 @@ body {
   &.win .card {
     animation: matchSuccess 0.5s ease-out;
   }
-  
+}
+
+.results {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+  transition: opacity 0.5s ease-out, transform 0s 0.2s;
+  background-color: rgba(179, 210, 238, 0.96);
+  color: #0f2133;
+  // z-index: 2;
+
+  &.visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: opacity 0.5s ease-out, transform 0s;
+  }
+
+  img {
+    width: 64px;
+  }
+
+  .grats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    font-family: 'Lobster', cursive;
+    gap: 20px;
+
+    h2 {
+      margin: 0;
+      font-size: 52px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+
+  .continue {
+    margin: 20px;
+    padding: 0 20px;
+    color: #fcc16d;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 50px;
+    border-radius: 10px;
+    background-color: transparent;
+    box-shadow: 0 0 40px 40px #66afe9 inset;
+    // background-color: #66afe9;
+    cursor: pointer;
+    vertical-align: middle;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #66afe9 inset, 0 0 10px 4px #66afe9;
+    }
+
+    svg {
+      width: 32px;
+      height: 32px;
+      margin-top: -5px;
+      vertical-align: middle;
+    }
+  }
+
+  .scoreboard {
+    text-align: center;
+    overflow: hidden;
+
+    &-board {
+      display: none;
+    }
+
+    & h3:hover {
+      cursor: pointer;
+      color: #66afe9;
+    }
+
+    &-board-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // gap: 40px;
+      font-size: 20px;
+      font-weight: bold;
+      transition: all 0.6s ease-out;
+      opacity: 0;
+      transform: translateX(-3000px);
+
+      &.show {
+        transition: all 0.6s ease-out;
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      & > * {
+        padding: 8px 12px 4px;
+        margin: 6px;
+        color: #0f2133;
+        background-color: antiquewhite;
+        border-radius: 5px;
+      }
+      & span {
+        color: #66afe9;
+      }
+    }
+  }
 }
 
 @keyframes lightning {
-  0% {    
-    box-shadow: 0 0 10px 6px rgba(255,255,255,1);
+  0% {
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 1);
   }
   25% {
-    box-shadow: 0 0 10px 6px rgba(255,255,255,0.75);
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.75);
   }
   50% {
-    box-shadow: 0 0 10px 6px rgba(255,255,255,0.5);
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.5);
   }
   75% {
-    box-shadow: 0 0 10px 6px rgba(255,255,255,0.25);
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.25);
   }
-  100%{
-    box-shadow: 0 0 10px 6px rgba(255,255,255,0);
+  100% {
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0);
   }
-  
 }
 
 @keyframes matchSuccess {
@@ -239,5 +354,5 @@ body {
   }
   100% {
     transform: translate3d(0, 0, 0) rotateY(180deg) scale(1);
-  }  
+  }
 }
