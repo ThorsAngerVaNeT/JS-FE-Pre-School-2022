@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="header">
+      <div>
+        <a href=".">
+          <svg class="logo"><use xlink:href="./assets/svg/sprite.svg#logo"></use></svg>
+        </a>
+        <h1>Memory Game</h1>
+      </div>
+    </header>
+    <main class="main">
+      <div class="score">
+        <div class="turns">
+          Turns:
+          <span>2</span>
+        </div>
+        <div class="attempts">
+          Attempts:
+          <span>0</span>
+        </div>
+        <div class="wins">
+          Wins:
+          <span>0</span>
+        </div>
+        <button class="volume" title="Mute/Unmute sound">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+      </div>
+      <div class="cards">
+        <div class="card" data-type="mjolnir" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#mjolnir"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="runes" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#runes"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="horn" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#horn"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="mjolnir" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#mjolnir"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="runes" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#runes"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="horn" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#horn"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="mjolnir" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#mjolnir"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="runes" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#runes"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="horn" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#horn"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="mjolnir" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#mjolnir"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="runes" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#runes"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="horn" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#horn"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="drakkar" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#drakkar"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="flag" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#flag"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="bracelet" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#bracelet"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="drakkar" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#drakkar"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="flag" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#flag"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+        <div class="card" data-type="bracelet" data-matched="false">
+          <div class="card-front">
+            <svg><use xlink:href="./assets/svg/sprite.svg#bracelet"></use></svg>
+          </div>
+          <div class="card-back">
+            <svg><use xlink:href="./assets/svg/sprite.svg#valknut"></use></svg>
+          </div>
+        </div>
+      </div>
+      <div class="results">
+        <div class="grats">
+          <svg><use xlink:href="./assets/svg/sprite.svg#helmet-axes"></use></svg>
+          <h2>Nice work!</h2>
+          <p>
+            May
+            <strong>Odin</strong>
+            give you knowledge on your path.
+            <br />
+            May
+            <strong>Thor</strong>
+            grant you strength and courage on your way.
+            <br />
+            May
+            <strong>Loki</strong>
+            give you laughter as you go.
+            <br />
+            May the blessings of your
+            <strong>Gods</strong>
+            be with you.
+          </p>
+          <svg><use xlink:href="./assets/svg/sprite.svg#aegishjalmaг"></use></svg>
+        </div>
+        <button class="continue">
+          <svg><use xlink:href="./assets/svg/sprite.svg#axes"></use></svg>
+          <span>To Battle!!</span>
+        </button>
+        <div class="scoreboard">
+          <h3>Scoreboard</h3>
+          <div class="scoreboard-board"></div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer-container">
+      <div class="footer-copyright">
+        <div>©</div>
+        <div>2022</div>
+        <div><a href="https://github.com/ThorsAngerVaNeT/" title="My GitHub">github</a></div>
+      </div>
+      <div>
+        <a href="https://rs.school/js-stage0/" target="_blank" title="Rolling Scopes School">
+          <!-- <svg><use xlink:href="./assets/svg/sprite.svg#rs_school_js"></use></svg> -->
+          <img class="rs-logo" src="./assets/svg/rs_school_js.svg" alt="RS School Logo" />
+        </a>
+      </div>
+    </footer>
+    <script src="./date.format.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
