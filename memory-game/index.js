@@ -31,6 +31,7 @@ soundWin.volume = 0.5;
 soundSlide.volume = 0.5;
 soundBattle.volume = 0.5;
 
+shuffleCards();
 function shuffleCards() {
   let cards = Array.from(cardsEl.children);
   while (cards.length) {
