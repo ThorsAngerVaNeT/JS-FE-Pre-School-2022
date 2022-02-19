@@ -19,22 +19,30 @@
       </div>
     </header>
     <main class="main">
-      <div class="score">
-        <div class="turns">
-          Turns:
-          <span>2</span>
+      <div class="controls-score">
+        <div class="controls">
+          <button class="scoreboard-btn">Scoreboard</button>
+          <button class="play" title="Play backgound music">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button class="volume" title="Mute/Unmute game sounds">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
         </div>
-        <div class="attempts">
-          Attempts:
-          <span>0</span>
+        <div class="score">
+          <div class="turns">
+            Turns:
+            <span>2</span>
+          </div>
+          <div class="attempts">
+            Attempts:
+            <span>0</span>
+          </div>
+          <div class="wins">
+            Wins:
+            <span>0</span>
+          </div>
         </div>
-        <div class="wins">
-          Wins:
-          <span>0</span>
-        </div>
-        <button class="volume" title="Mute/Unmute sound">
-          <i class="fa-solid fa-volume-high"></i>
-        </button>
       </div>
       <div class="cards">
         <div class="card" data-type="mjolnir" data-matched="false">
@@ -186,6 +194,7 @@
         <div class="grats">
           <svg><use xlink:href="./assets/svg/sprite.svg#helmet-axes"></use></svg>
           <h2>Nice work!</h2>
+          <div class="result"></div>
           <p>
             May
             <strong>Odin</strong>
@@ -205,14 +214,14 @@
           </p>
           <svg><use xlink:href="./assets/svg/sprite.svg#aegishjalmaг"></use></svg>
         </div>
-        <button class="continue">
-          <svg><use xlink:href="./assets/svg/sprite.svg#axes"></use></svg>
-          <span>To Battle!!</span>
-        </button>
         <div class="scoreboard">
           <h3>Scoreboard</h3>
           <div class="scoreboard-board"></div>
         </div>
+        <button class="continue">
+          <svg><use xlink:href="./assets/svg/sprite.svg#axes"></use></svg>
+          <span>To Battle!!</span>
+        </button>
       </div>
     </main>
     <footer class="footer-container">

@@ -68,7 +68,45 @@ body.bright {
 .main .score span.last-turn {
   color: crimson;
 }
-.main .volume {
+.main .controls-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.main .controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.main .controls .scoreboard-btn {
+  margin: 20px;
+  padding: 0 20px;
+  color: #fcc16d;
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 50px;
+  border-radius: 10px;
+  background-color: transparent;
+  box-shadow: 0 0 2px 0 #66afe9 inset, 0 0 2px 0px #66afe9;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.main .controls .scoreboard-btn:hover {
+  box-shadow: 0 0 10px 0 #66afe9 inset, 0 0 10px 4px #66afe9;
+}
+.main .controls .scoreboard-btn svg {
+  width: 32px;
+  height: 32px;
+  margin-top: -5px;
+  vertical-align: middle;
+}
+.main .controls .volume,
+.main .controls .play {
+  width: 32px;
   display: inline;
   background: none;
   border: none;
@@ -80,7 +118,8 @@ body.bright {
   cursor: pointer;
   outline-offset: 5px;
 }
-.main .volume:hover {
+.main .controls .volume:hover,
+.main .controls .play:hover {
   color: antiquewhite;
 }
 
@@ -247,7 +286,8 @@ body.bright {
   cursor: pointer;
   color: #66afe9;
 }
-.results .scoreboard-board-item {
+.results .scoreboard-board-item,
+.results .result {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -257,20 +297,27 @@ body.bright {
   opacity: 0;
   transform: translateX(-3000px);
 }
-.results .scoreboard-board-item.show {
+.results .scoreboard-board-item.show,
+.results .result.show {
   transition: all 0.6s ease-out;
   opacity: 1;
   transform: translateX(0);
 }
-.results .scoreboard-board-item > * {
+.results .scoreboard-board-item > *,
+.results .result > * {
   padding: 8px 12px 4px;
   margin: 6px;
   color: #0f2133;
   background-color: antiquewhite;
   border-radius: 5px;
 }
-.results .scoreboard-board-item span {
+.results .scoreboard-board-item span,
+.results .result span {
   color: #66afe9;
+}
+.results .result {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @keyframes lightning {
