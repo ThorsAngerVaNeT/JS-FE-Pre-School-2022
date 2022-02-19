@@ -7,6 +7,10 @@ const volumeIcon = document.querySelector('.volume i');
 const scoreboard = document.querySelector('.scoreboard-board');
 const continueBtn = document.querySelector('.continue');
 const resultsEl = document.querySelector('.results');
+const grats = resultsEl.querySelector('.grats');
+const playBtn = document.querySelector('.play');
+const playIcon = playBtn.querySelector('.play i');
+const scoreboardBtn = document.querySelector('.scoreboard-btn');
 
 const timeout = 650;
 let turnsCount = 2;
@@ -14,6 +18,7 @@ let attemptsCount = 0;
 let winsCount = 0;
 let attemptsOverallCount = 0;
 let isVolumeUp = volumeIcon.classList.contains('fa-volume-high');
+let isMusicPlaying = false;
 
 const soundTurn = new Audio('./assets/audio/blop.mp3');
 const soundMatch = new Audio('./assets/audio/match.mp3');
@@ -22,6 +27,7 @@ const soundReset = new Audio('./assets/audio/reset.m4a');
 const soundWin = new Audio('./assets/audio/win.m4a');
 const soundSlide = new Audio('./assets/audio/slide.mp3');
 const soundBattle = new Audio('./assets/audio/battle-cry.m4a');
+const soundMusic = new Audio('./assets/audio/background-music.mp3');
 
 soundTurn.volume = 0.5;
 soundMatch.volume = 0.5;
@@ -30,8 +36,10 @@ soundReset.volume = 0.5;
 soundWin.volume = 0.5;
 soundSlide.volume = 0.5;
 soundBattle.volume = 0.5;
+soundMusic.volume = 0.1;
+soundMusic.loop = true;
 
-shuffleCards();
+// shuffleCards();
 function shuffleCards() {
   let cards = Array.from(cardsEl.children);
   while (cards.length) {
@@ -113,9 +121,15 @@ function selectCard(e) {
           cardsEl.classList.add('win');
           if (isVolumeUp) soundWin.play();
           setTimeout(() => {
+            // scoreboard.style.height = '0px';
             resultsToHTML(results);
+            resultsEl.classList.add('visible');
+            resultsEl.querySelector(
+              '.result'
+            ).innerHTML = `<div class="turns">Turns: <span>${turnsCount}</span></div><div class="attempts">Attempts: <span>${attemptsCount}</span></div><div class="attempts">Overall Attempts: <span>${attemptsOverallCount}</span></div><div class="wins">Wins: <span>${winsCount}</span></div>`;
             cardsEl.classList.remove('win');
-            resultsEl.style.display = 'flex';
+            // resultsEl.style.display = 'flex';
+            grats.style.display = 'flex';
           }, timeout);
         }, timeout);
         // alert('WINNER');
@@ -133,13 +147,14 @@ function resetGame() {
   attemptsCount = 0;
   attemptsSpan.textContent = attemptsCount;
   turnsSpan.classList.remove('last-turn');
-  if (isVolumeUp) soundBattle.play();
+  if (isVolumeUp && grats.style.display !== 'none') soundBattle.play();
 }
 
 // resultsEl.classList.add('visible');
-// resultsToHTML(JSON.parse(localStorage.results));
+resultsToHTML(JSON.parse(localStorage.results));
 
 function resultsToHTML(results) {
+  scoreboard.style.display = 'none';
   scoreboard.innerHTML = '';
   results.forEach(r => {
     scoreboard.insertAdjacentHTML(
@@ -147,53 +162,74 @@ function resultsToHTML(results) {
       `<div class="scoreboard-board-item"><div class="turns">Turns: <span>${r.turnsCount}</span></div><div class="attempts">Attempts: <span>${r.attemptsCount}</span></div><div class="attempts">Overall Attempts: <span>${r.attemptsOverallCount}</span></div><div class="wins">Wins: <span>${r.winsCount}</span></div><div class="date">Date: <span>${r.date}</span></div></div>`
     );
   });
-  resultsEl.classList.add('visible');
   // showResults();
 }
 
 function volumeToggle() {
   volumeIcon.classList.toggle('fa-volume-high');
   volumeIcon.classList.toggle('fa-volume-xmark');
-  isVolumeUp = volumeIcon.classList.contains('fa-volume-high');
+  isVolumeUp = !isVolumeUp;
 }
 
-function showResults() {
-  const items = document.querySelectorAll('.scoreboard-board-item');
-  const isShowing = window.getComputedStyle(document.querySelector('.scoreboard-board')).display === 'none';
-  const scoreBoard = document.querySelector('.scoreboard-board');
-  if (isShowing) {
-    scoreBoard.style.height = '0px';
-    scoreBoard.style.display = 'block';
-    items.forEach((el, i) => {
-      setTimeout(() => {
-        // if (volumeIcon.classList.contains('fa-volume-high')) soundSlide.play();
-        scoreBoard.style.height = `${(i + 1) * 48}px`;
-        el.classList.toggle('show');
-      }, 600 * i);
-    });
-  } else {
-    Array.from(items)
-      .reverse()
-      .forEach((el, i) => {
-        setTimeout(() => {
-          // console.log(scoreBoard.style.height);
-          scoreBoard.style.height = `${(items.length - i) * 48}px`;
-          // if (volumeIcon.classList.contains('fa-volume-high')) soundSlide.play();
-          el.classList.toggle('show');
-        }, 600 * i);
-      });
-    setTimeout(() => {
-      scoreBoard.style.display = 'none';
-    }, items.length * 600);
+function toggleResults(e) {
+  const isScoreboardBtnClick = e?.target.classList.contains('scoreboard-btn');
+  const isItemsShowed = document.querySelectorAll('.scoreboard-board-item.show').length > 0;
+
+  if (isScoreboardBtnClick) {
+    resultsEl.classList.add('visible');
+    grats.style.display = 'none';
+  }
+  if (!(isScoreboardBtnClick && isItemsShowed)) {
+    const isShowing = window.getComputedStyle(scoreboard).display === 'none' || isScoreboardBtnClick;
+    if (isShowing) showResults();
+    else hideResults();
   }
 }
 
-function getResults() {
-  resultsToHTML(JSON.parse(localStorage.results));
+function showResults(e) {
+  const items = document.querySelectorAll('.scoreboard-board-item');
+  scoreboard.style.height = '0px';
+  scoreboard.style.display = 'block';
+  items.forEach((el, i) => {
+    setTimeout(() => {
+      scoreboard.style.height = `${(i + 1) * 48}px`;
+      el.classList.add('show');
+    }, 600 * i);
+  });
+}
+
+function hideResults() {
+  const items = document.querySelectorAll('.scoreboard-board-item');
+  Array.from(items)
+    .reverse()
+    .forEach((el, i) => {
+      setTimeout(() => {
+        scoreboard.style.height = `${(items.length - i) * 48}px`;
+        el.classList.remove('show');
+      }, 600 * i);
+    });
+  setTimeout(() => {
+    scoreboard.style.display = 'none';
+  }, items.length * 600);
+}
+
+function toggleMusic() {
+  playIcon.classList.toggle('fa-play');
+  playIcon.classList.toggle('fa-pause');
+  isMusicPlaying = !isMusicPlaying;
+  if (isMusicPlaying) {
+    soundMusic.play();
+    playBtn.title = 'Pause background music';
+  } else {
+    soundMusic.pause();
+    playBtn.title = 'Play background music';
+  }
 }
 
 cardsEl.addEventListener('click', selectCard);
 volume.addEventListener('click', volumeToggle);
 continueBtn.addEventListener('click', resetGame);
+playBtn.addEventListener('click', toggleMusic);
+scoreboardBtn.addEventListener('click', toggleResults);
 
-document.querySelector('.scoreboard h3').addEventListener('click', showResults);
+document.querySelector('.scoreboard h3').addEventListener('click', toggleResults);
