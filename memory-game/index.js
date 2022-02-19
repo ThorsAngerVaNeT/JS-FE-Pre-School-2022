@@ -171,40 +171,46 @@ function volumeToggle() {
   isVolumeUp = !isVolumeUp;
 }
 
-function showResults(e) {
-  const items = document.querySelectorAll('.scoreboard-board-item');
-  const isShowing = window.getComputedStyle(scoreboard).display === 'none' || e?.target.classList.contains('scoreboard-btn');
-  if (e?.target.classList.contains('scoreboard-btn')) {
+function toggleResults(e) {
+  const isScoreboardBtnClick = e?.target.classList.contains('scoreboard-btn');
+  const isItemsShowed = document.querySelectorAll('.scoreboard-board-item.show').length > 0;
+
+  if (isScoreboardBtnClick) {
     resultsEl.classList.add('visible');
     grats.style.display = 'none';
   }
-  // console.log(isShowing);
-  // console.log(e.target?.classList.contains('scoreboard-btn'));
-  if (isShowing) {
-    scoreboard.style.height = '0px';
-    scoreboard.style.display = 'block';
-    items.forEach((el, i) => {
+  if (!(isScoreboardBtnClick && isItemsShowed)) {
+    const isShowing = window.getComputedStyle(scoreboard).display === 'none' || isScoreboardBtnClick;
+    if (isShowing) showResults();
+    else hideResults();
+  }
+}
+
+function showResults(e) {
+  const items = document.querySelectorAll('.scoreboard-board-item');
+  scoreboard.style.height = '0px';
+  scoreboard.style.display = 'block';
+  items.forEach((el, i) => {
+    setTimeout(() => {
+      scoreboard.style.height = `${(i + 1) * 48}px`;
+      el.classList.add('show');
+    }, 600 * i);
+  });
+}
+
+function hideResults() {
+  const items = document.querySelectorAll('.scoreboard-board-item');
+  Array.from(items)
+    .reverse()
+    .forEach((el, i) => {
       setTimeout(() => {
-        // if (volumeIcon.classList.contains('fa-volume-high')) soundSlide.play();
-        scoreboard.style.height = `${(i + 1) * 48}px`;
-        el.classList.add('show');
+        scoreboard.style.height = `${(items.length - i) * 48}px`;
+        el.classList.remove('show');
       }, 600 * i);
     });
-  } else {
-    Array.from(items)
-      .reverse()
-      .forEach((el, i) => {
-        setTimeout(() => {
-          // console.log(scoreboard.style.height);
-          scoreboard.style.height = `${(items.length - i) * 48}px`;
-          // if (volumeIcon.classList.contains('fa-volume-high')) soundSlide.play();
-          el.classList.remove('show');
-        }, 600 * i);
-      });
-    setTimeout(() => {
-      scoreboard.style.display = 'none';
-    }, items.length * 600);
-  }
+  setTimeout(() => {
+    scoreboard.style.display = 'none';
+  }, items.length * 600);
 }
 
 function toggleMusic() {
@@ -224,6 +230,6 @@ cardsEl.addEventListener('click', selectCard);
 volume.addEventListener('click', volumeToggle);
 continueBtn.addEventListener('click', resetGame);
 playBtn.addEventListener('click', toggleMusic);
-scoreboardBtn.addEventListener('click', showResults);
+scoreboardBtn.addEventListener('click', toggleResults);
 
-document.querySelector('.scoreboard h3').addEventListener('click', showResults);
+document.querySelector('.scoreboard h3').addEventListener('click', toggleResults);
