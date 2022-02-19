@@ -20,6 +20,16 @@
     </header>
     <main class="main">
       <div class="controls-score">
+        <div class="difficulty">
+          <input class="hidden" type="radio" name="difficulty" id="normal" />
+          <input class="hidden" type="radio" name="difficulty" id="hard" checked />
+          <label class="difficulty-label difficulty-label-normal" for="normal" title="Normal Difficulty">Normal</label>
+          <svg class="difficulty-icon">
+            <use xlink:href="./assets/svg/sprite.svg#normal"></use>
+            <use xlink:href="./assets/svg/sprite.svg#hard"></use>
+          </svg>
+          <label class="difficulty-label difficulty-label-hard" for="hard" title="Hard Difficulty">Hard</label>
+        </div>
         <div class="controls">
           <button class="scoreboard-btn">Scoreboard</button>
           <button class="play" title="Play backgound music">

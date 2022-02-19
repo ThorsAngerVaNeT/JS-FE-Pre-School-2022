@@ -186,7 +186,7 @@ function toggleResults(e) {
   }
 }
 
-function showResults(e) {
+function showResults() {
   const items = document.querySelectorAll('.scoreboard-board-item');
   scoreboard.style.height = '0px';
   scoreboard.style.display = 'block';
