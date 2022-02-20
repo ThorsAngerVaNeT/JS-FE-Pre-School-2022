@@ -48,17 +48,17 @@ body.bright {
 .main {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
 }
 .main .score {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
   font-size: 24px;
   font-weight: bold;
 }
@@ -73,7 +73,7 @@ body.bright {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
 }
 .main .controls {
   display: flex;
@@ -163,7 +163,7 @@ body.bright {
 .cards {
   display: grid;
   grid-template: repeat(3, 1fr)/repeat(6, 1fr);
-  gap: 40px;
+  gap: 30px;
 }
 .cards [data-matched='true'] {
   transform: translate3d(0, 0, 0) rotateY(180deg);
@@ -222,14 +222,14 @@ body.bright {
   top: 0;
   left: 0;
   opacity: 0;
-  transform: translate3d(100%, 0, 0);
+  transform: rotateY(90deg);
   transition: opacity 0.5s ease-out, transform 0s 0.2s;
   background-color: rgba(179, 210, 238, 0.96);
   color: #0f2133;
 }
 .results.visible {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transform: rotateY(0);
   transition: opacity 0.5s ease-out, transform 0s;
 }
 .results img {
