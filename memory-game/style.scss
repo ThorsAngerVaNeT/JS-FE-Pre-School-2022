@@ -268,7 +268,7 @@ body {
   transition: opacity 0.5s ease-out, transform 0s 0.2s;
   background-color: rgba(179, 210, 238, 0.96);
   color: #0f2133;
-  // z-index: 2;
+  z-index: 2;
 
   &.visible {
     opacity: 1;
@@ -410,6 +410,7 @@ body {
     height: 64px;
     margin: 0 20px;
     filter: drop-shadow(0 0 4px #66afe9);
+    transition: all 0.5s ease-in-out;
   }
 
   &-label {
@@ -418,6 +419,11 @@ body {
     font-weight: bold;
     vertical-align: middle;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      text-shadow: 0 0 20px #66afe9;
+    }
   }
 
   #hard:checked ~ &-label-hard,
