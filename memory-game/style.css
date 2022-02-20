@@ -281,6 +281,9 @@ body.bright {
 }
 .results .scoreboard-board {
   display: none;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 .results .scoreboard h3:hover {
   cursor: pointer;
@@ -315,9 +318,45 @@ body.bright {
 .results .result span {
   color: #66afe9;
 }
+.results .scoreboard-board-item .difficulty,
+.results .result .difficulty {
+  width: 178px;
+}
 .results .result {
   opacity: 1;
   transform: translateX(0);
+}
+
+.difficulty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#hard:checked ~ .difficulty-icon use:nth-child(1), #normal:checked ~ .difficulty-icon use:nth-child(2) {
+  display: none;
+}
+#hard:checked ~ .difficulty-icon use:nth-child(2), #normal:checked ~ .difficulty-icon use:nth-child(1) {
+  display: block;
+}
+.difficulty-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 20px;
+  filter: drop-shadow(0 0 4px #66afe9);
+}
+.difficulty-label {
+  color: #abb7c4;
+  font-size: 24px;
+  font-weight: bold;
+  vertical-align: middle;
+  cursor: pointer;
+}
+#hard:checked ~ .difficulty-label-hard, #normal:checked ~ .difficulty-label-normal {
+  color: #66afe9;
+}
+
+.hidden {
+  display: none;
 }
 
 @keyframes lightning {

@@ -333,6 +333,9 @@ body {
 
     &-board {
       display: none;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
     }
 
     & h3:hover {
@@ -368,12 +371,55 @@ body {
     & span {
       color: #66afe9;
     }
+
+    .difficulty {
+      width: 178px;
+    }
   }
 
   .result {
     opacity: 1;
     transform: translateX(0);
   }
+}
+.difficulty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  #hard:checked ~ &-icon use:nth-child(1),
+  #normal:checked ~ &-icon use:nth-child(2) {
+    display: none;
+  }
+
+  #hard:checked ~ &-icon use:nth-child(2),
+  #normal:checked ~ &-icon use:nth-child(1) {
+    display: block;
+  }
+
+  &-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 20px;
+    filter: drop-shadow(0 0 4px #66afe9);
+  }
+
+  &-label {
+    color: #abb7c4;
+    font-size: 24px;
+    font-weight: bold;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  #hard:checked ~ &-label-hard,
+  #normal:checked ~ &-label-normal {
+    color: #66afe9;
+  }
+}
+
+.hidden {
+  display: none;
 }
 
 @keyframes lightning {
