@@ -333,6 +333,9 @@ body {
 
     &-board {
       display: none;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
     }
 
     & h3:hover {
@@ -367,6 +370,10 @@ body {
     }
     & span {
       color: #66afe9;
+    }
+
+    .difficulty {
+      width: 178px;
     }
   }
 

@@ -281,6 +281,9 @@ body.bright {
 }
 .results .scoreboard-board {
   display: none;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 .results .scoreboard h3:hover {
   cursor: pointer;
@@ -314,6 +317,10 @@ body.bright {
 .results .scoreboard-board-item span,
 .results .result span {
   color: #66afe9;
+}
+.results .scoreboard-board-item .difficulty,
+.results .result .difficulty {
+  width: 178px;
 }
 .results .result {
   opacity: 1;
