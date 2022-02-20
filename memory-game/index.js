@@ -102,7 +102,7 @@ function selectCard(e) {
             attemptsCount += 1;
             attemptsSpan.textContent = attemptsCount;
             turnsSpan.classList.remove('last-turn');
-            cardsEl.querySelectorAll('[data-matched="true"').forEach(el => (el.dataset.matched = false));
+            cardsEl.querySelectorAll('[data-matched="true"]').forEach(el => (el.dataset.matched = false));
           }, timeout);
         }
       }
@@ -153,15 +153,19 @@ function selectCard(e) {
 
 function resetGame(e) {
   resultsEl.classList.remove('visible');
-  cardsEl.querySelectorAll('[data-matched="true"').forEach(el => (el.dataset.matched = false));
-  shuffleCards();
-  if (difficulty === 'hard') turnsCount = 2;
-  else turnsCount = 0;
-  turnsSpan.textContent = turnsCount;
-  attemptsCount = 0;
-  attemptsSpan.textContent = attemptsCount;
-  turnsSpan.classList.remove('last-turn');
-  if (isVolumeUp && grats.style.display !== 'none' && e.target.name !== 'difficulty') soundBattle.play();
+  const isWin = grats.style.display !== 'none';
+  if (isWin) {
+    cardsEl.querySelectorAll('[data-matched="true"]').forEach(el => (el.dataset.matched = false));
+    cardsEl.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+    shuffleCards();
+    if (difficulty === 'hard') turnsCount = 2;
+    else turnsCount = 0;
+    turnsSpan.textContent = turnsCount;
+    attemptsCount = 0;
+    attemptsSpan.textContent = attemptsCount;
+    turnsSpan.classList.remove('last-turn');
+    if (isVolumeUp && isWin && e.target.name !== 'difficulty') soundBattle.play();
+  }
 }
 
 // resultsEl.classList.add('visible');
@@ -185,7 +189,7 @@ function resultsToHTML(results) {
         }</div>`
       );
     });
-  }
+  } else scoreboard.insertAdjacentHTML('beforeend', '<div class="scoreboard-board-item"><div>There are no results yet!</div></div>');
   // showResults();
 }
 
@@ -195,7 +199,7 @@ function volumeToggle() {
   isVolumeUp = !isVolumeUp;
 }
 
-function toggleResults(e) {
+function toggleScoreboard(e) {
   const isScoreboardBtnClick = e?.target.classList.contains('scoreboard-btn');
   const isItemsShowed = document.querySelectorAll('.scoreboard-board-item.show').length > 0;
 
@@ -209,6 +213,8 @@ function toggleResults(e) {
     else hideResults();
   }
 }
+
+function toggleResults() {}
 
 function showResults() {
   const items = document.querySelectorAll('.scoreboard-board-item');
@@ -259,9 +265,9 @@ cardsEl.addEventListener('click', selectCard);
 volume.addEventListener('click', volumeToggle);
 continueBtn.addEventListener('click', resetGame);
 playBtn.addEventListener('click', toggleMusic);
-scoreboardBtn.addEventListener('click', toggleResults);
+scoreboardBtn.addEventListener('click', toggleScoreboard);
 
-document.querySelector('.scoreboard h3').addEventListener('click', toggleResults);
+document.querySelector('.scoreboard h3').addEventListener('click', toggleScoreboard);
 document.querySelectorAll('input[type="radio"]').forEach(r => r.addEventListener('click', setDifficulty));
 
 console.log(

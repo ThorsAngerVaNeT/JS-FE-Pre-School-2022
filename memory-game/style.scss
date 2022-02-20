@@ -59,17 +59,17 @@ body {
 .main {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
 
   .score {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
     font-size: 24px;
     font-weight: bold;
 
@@ -87,7 +87,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
   }
 
   .controls {
@@ -190,7 +190,7 @@ body {
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(6, 1fr);
   // grid-area: 1/1/6/6;
-  gap: 40px;
+  gap: 30px;
 
   [data-matched='true'] {
     transform: translate3d(0, 0, 0) rotateY(180deg);
@@ -264,15 +264,15 @@ body {
   top: 0;
   left: 0;
   opacity: 0;
-  transform: translate3d(100%, 0, 0);
+  transform: rotateY(90deg);
   transition: opacity 0.5s ease-out, transform 0s 0.2s;
   background-color: rgba(179, 210, 238, 0.96);
   color: #0f2133;
-  // z-index: 2;
+  z-index: 2;
 
   &.visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: rotateY(0);
     transition: opacity 0.5s ease-out, transform 0s;
   }
 
@@ -410,6 +410,7 @@ body {
     height: 64px;
     margin: 0 20px;
     filter: drop-shadow(0 0 4px #66afe9);
+    transition: all 0.5s ease-in-out;
   }
 
   &-label {
@@ -418,6 +419,11 @@ body {
     font-weight: bold;
     vertical-align: middle;
     cursor: pointer;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      text-shadow: 0 0 20px #66afe9;
+    }
   }
 
   #hard:checked ~ &-label-hard,
