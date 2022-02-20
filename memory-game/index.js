@@ -40,7 +40,7 @@ soundBattle.volume = 0.5;
 soundMusic.volume = 0.1;
 soundMusic.loop = true;
 
-// shuffleCards();
+shuffleCards();
 function shuffleCards() {
   let cards = Array.from(cardsEl.children);
   while (cards.length) {
@@ -165,25 +165,27 @@ function resetGame(e) {
 }
 
 // resultsEl.classList.add('visible');
-resultsToHTML(JSON.parse(localStorage.results));
+resultsToHTML(JSON.parse(localStorage.getItem('results')));
 
 function resultsToHTML(results) {
   scoreboard.style.display = 'none';
   scoreboard.innerHTML = '';
-  results.forEach(r => {
-    scoreboard.insertAdjacentHTML(
-      'beforeend',
-      `<div class="scoreboard-board-item"><div class="date">Date: <span>${r.date}</span></div><div class="turns">Turns: <span>${
-        r.turnsCount
-      }</span></div><div class="wins">Wins: <span>${r.winsCount}</span></div><div class="difficulty">Difficulty: <span>${
-        r.difficulty
-      }</span></div>${
-        r.difficulty === 'hard'
-          ? `<div class="attempts">Attempts: <span>${r.attemptsCount}</span></div><div class="attempts">Overall Attempts: <span>${r.attemptsOverallCount}</span></div>`
-          : ''
-      }</div>`
-    );
-  });
+  if (results) {
+    results.forEach(r => {
+      scoreboard.insertAdjacentHTML(
+        'beforeend',
+        `<div class="scoreboard-board-item"><div class="date">Date: <span>${r.date}</span></div><div class="turns">Turns: <span>${
+          r.turnsCount
+        }</span></div><div class="wins">Wins: <span>${r.winsCount}</span></div><div class="difficulty">Difficulty: <span>${
+          r.difficulty
+        }</span></div>${
+          r.difficulty === 'hard'
+            ? `<div class="attempts">Attempts: <span>${r.attemptsCount}</span></div><div class="attempts">Overall Attempts: <span>${r.attemptsOverallCount}</span></div>`
+            : ''
+        }</div>`
+      );
+    });
+  }
   // showResults();
 }
 

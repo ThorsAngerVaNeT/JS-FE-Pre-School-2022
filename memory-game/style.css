@@ -318,6 +318,14 @@ body.bright {
 .results .result span {
   color: #66afe9;
 }
+.results .scoreboard-board-item .turns,
+.results .result .turns {
+  width: 107px;
+}
+.results .scoreboard-board-item .wins,
+.results .result .wins {
+  width: 101px;
+}
 .results .scoreboard-board-item .difficulty,
 .results .result .difficulty {
   width: 178px;
