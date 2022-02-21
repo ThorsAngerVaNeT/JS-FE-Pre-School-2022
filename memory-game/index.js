@@ -13,6 +13,7 @@ const playIcon = playBtn.querySelector('.play i');
 const scoreboardBtn = document.querySelector('.scoreboard-btn');
 
 const timeout = 650;
+const divResultHeight = /*window.matchMedia('(max-width: 1034px)').matches ? 72 : */ 48;
 let difficulty = 'hard';
 let turnsCount = 2;
 let attemptsCount = 0;
@@ -139,7 +140,7 @@ function selectCard(e) {
               '.result'
             ).innerHTML = `<div class="turns">Turns: <span>${turnsCount}</span></div><div class="attempts">Attempts: <span>${attemptsCount}</span></div>${
               difficulty === 'hard' ? `<div class="attempts">Overall Attempts: <span>${attemptsOverallCount}</span></div>` : ''
-            }<div class="wins">Wins: <span>${winsCount}</span></div><div class="difficulty">Difficulty: <span>${difficulty}</span></div>`;
+            }<div class="wins">Wins: <span>${winsCount}</span></div><div class="result-difficulty">Difficulty: <span>${difficulty}</span></div>`;
             cardsEl.classList.remove('win');
             // resultsEl.style.display = 'flex';
             grats.style.display = 'flex';
@@ -180,7 +181,7 @@ function resultsToHTML(results) {
         'beforeend',
         `<div class="scoreboard-board-item"><div class="date">Date: <span>${r.date}</span></div><div class="turns">Turns: <span>${
           r.turnsCount
-        }</span></div><div class="wins">Wins: <span>${r.winsCount}</span></div><div class="difficulty">Difficulty: <span>${
+        }</span></div><div class="wins">Wins: <span>${r.winsCount}</span></div><div class="result-difficulty">Difficulty: <span>${
           r.difficulty
         }</span></div>${
           r.difficulty === 'hard'
@@ -214,15 +215,13 @@ function toggleScoreboard(e) {
   }
 }
 
-function toggleResults() {}
-
 function showResults() {
   const items = document.querySelectorAll('.scoreboard-board-item');
   scoreboard.style.height = '0px';
   scoreboard.style.display = 'flex';
   items.forEach((el, i) => {
     setTimeout(() => {
-      scoreboard.style.height = `${(i + 1) * 48}px`;
+      scoreboard.style.height = `${(i + 1) * divResultHeight}px`;
       el.classList.add('show');
     }, 600 * i);
   });
@@ -234,7 +233,7 @@ function hideResults() {
     .reverse()
     .forEach((el, i) => {
       setTimeout(() => {
-        scoreboard.style.height = `${(items.length - i) * 48}px`;
+        scoreboard.style.height = `${(items.length - i) * divResultHeight}px`;
         el.classList.remove('show');
       }, 600 * i);
     });
