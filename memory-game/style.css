@@ -51,6 +51,7 @@ body.bright {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 20px;
 }
@@ -94,6 +95,7 @@ body.bright {
   box-shadow: 0 0 2px 0 #66afe9 inset, 0 0 2px 0px #66afe9;
   cursor: pointer;
   vertical-align: middle;
+  transition: 0.5s;
 }
 .main .controls .scoreboard-btn:hover {
   box-shadow: 0 0 10px 0 #66afe9 inset, 0 0 10px 4px #66afe9;
@@ -117,6 +119,7 @@ body.bright {
   vertical-align: middle;
   cursor: pointer;
   outline-offset: 5px;
+  transition: 0.5s;
 }
 .main .controls .volume:hover,
 .main .controls .play:hover {
@@ -150,6 +153,10 @@ body.bright {
   height: 39.95px;
   vertical-align: middle;
   filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%);
+  transition: 0.5s;
+}
+.footer-container .rs-logo:hover {
+  filter: invert(68%) sepia(80%) saturate(1163%) hue-rotate(178deg) brightness(94%) contrast(94%);
 }
 
 @keyframes rotation {
@@ -287,6 +294,7 @@ body.bright {
   align-items: start;
 }
 .results .scoreboard h3:hover {
+  transition: 0.5s;
   cursor: pointer;
   color: #66afe9;
 }
@@ -315,6 +323,15 @@ body.bright {
   background-color: antiquewhite;
   border-radius: 5px;
 }
+@media (max-width: 1034px) {
+  .results .scoreboard-board-item > *,
+  .results .result > * {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
 .results .scoreboard-board-item span,
 .results .result span {
   color: #66afe9;
@@ -336,25 +353,25 @@ body.bright {
   transform: translateX(0);
 }
 
-.difficulty {
+.controls-score .difficulty {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-#hard:checked ~ .difficulty-icon use:nth-child(1), #normal:checked ~ .difficulty-icon use:nth-child(2) {
+#hard:checked ~ .controls-score .difficulty-icon use:nth-child(1), #normal:checked ~ .controls-score .difficulty-icon use:nth-child(2) {
   display: none;
 }
-#hard:checked ~ .difficulty-icon use:nth-child(2), #normal:checked ~ .difficulty-icon use:nth-child(1) {
+#hard:checked ~ .controls-score .difficulty-icon use:nth-child(2), #normal:checked ~ .controls-score .difficulty-icon use:nth-child(1) {
   display: block;
 }
-.difficulty-icon {
+.controls-score .difficulty-icon {
   width: 64px;
   height: 64px;
   margin: 0 20px;
   filter: drop-shadow(0 0 4px #66afe9);
   transition: all 0.5s ease-in-out;
 }
-.difficulty-label {
+.controls-score .difficulty-label {
   color: #abb7c4;
   font-size: 24px;
   font-weight: bold;
@@ -362,10 +379,10 @@ body.bright {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
-.difficulty-label:hover {
+.controls-score .difficulty-label:hover {
   text-shadow: 0 0 20px #66afe9;
 }
-#hard:checked ~ .difficulty-label-hard, #normal:checked ~ .difficulty-label-normal {
+#hard:checked ~ .controls-score .difficulty-label-hard, #normal:checked ~ .controls-score .difficulty-label-normal {
   color: #66afe9;
 }
 
