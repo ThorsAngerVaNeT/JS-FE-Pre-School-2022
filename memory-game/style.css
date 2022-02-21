@@ -94,6 +94,7 @@ body.bright {
   box-shadow: 0 0 2px 0 #66afe9 inset, 0 0 2px 0px #66afe9;
   cursor: pointer;
   vertical-align: middle;
+  transition: 0.5s;
 }
 .main .controls .scoreboard-btn:hover {
   box-shadow: 0 0 10px 0 #66afe9 inset, 0 0 10px 4px #66afe9;
@@ -117,6 +118,7 @@ body.bright {
   vertical-align: middle;
   cursor: pointer;
   outline-offset: 5px;
+  transition: 0.5s;
 }
 .main .controls .volume:hover,
 .main .controls .play:hover {
@@ -150,6 +152,10 @@ body.bright {
   height: 39.95px;
   vertical-align: middle;
   filter: invert(82%) sepia(15%) saturate(232%) hue-rotate(170deg) brightness(87%) contrast(91%);
+  transition: 0.5s;
+}
+.footer-container .rs-logo:hover {
+  filter: invert(68%) sepia(80%) saturate(1163%) hue-rotate(178deg) brightness(94%) contrast(94%);
 }
 
 @keyframes rotation {
@@ -287,6 +293,7 @@ body.bright {
   align-items: start;
 }
 .results .scoreboard h3:hover {
+  transition: 0.5s;
   cursor: pointer;
   color: #66afe9;
 }
@@ -336,7 +343,7 @@ body.bright {
   transform: translateX(0);
 }
 
-.difficulty {
+.controls-score .difficulty {
   display: flex;
   align-items: center;
   gap: 10px;
